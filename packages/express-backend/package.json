@@ -2,10 +2,17 @@
   "name": "express-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "export DEBUG='express:router' && npx nodemon backend --experimental-modules --es-module-specifier-resolution=node",
+    "start": "node main.js"
   },
   "author": "",
-  "license": "ISC"
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^7.6.3"
+  }
 }

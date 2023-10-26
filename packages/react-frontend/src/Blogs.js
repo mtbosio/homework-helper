@@ -1,37 +1,43 @@
 import React from "react";
 
 function Title() {
-  return <p>I have a problem with Calc 2</p>;
+  return <h4>I have a problem with Calc 2</h4>;
 }
 
 function Date() {
-  return <p>2023-10-10</p>;
+  return <h5>2023-10-10</h5>;
 }
 
 function Time() {
-  return <p>10:00 pm</p>;
+  return <h5>10:00 pm</h5>;
 }
 
 function Author() {
-  return <p>Charles</p>;
+  return <h5>By: Charles</h5>;
 }
 
-function Content() {
+function Body() {
   return <p>Im having trouble with problem 5</p>;
 }
 
 function Votes() {
-  return <p>Up 5 | Down 3</p>;
+  return <h5>👍 5 | 👎 3</h5>;
+}
+
+function Comment() {
+  return <h6>Comment1</h6>;
 }
 
 function Blogs() {
   return (
     <div className="Blog">
+      <Title />
       <Date />
       <Time />
       <Author />
-      <Content />
+      <Body />
       <Votes />
+      <Comment />
     </div>
   );
 }

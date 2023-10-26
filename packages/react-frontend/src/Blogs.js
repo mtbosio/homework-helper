@@ -38,6 +38,7 @@ function Blogs() {
       <Body />
       <Votes />
       <Comment />
+      <Comment />
     </div>
   );
 }

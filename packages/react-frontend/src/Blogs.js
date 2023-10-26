@@ -1,44 +1,47 @@
 import React from "react";
 
-function Title() {
-  return <h4>I have a problem with Calc 2</h4>;
+function Title(props) {
+  return <h1>{props.problem.title}</h1>;
 }
 
-function Date() {
-  return <h5>2023-10-10</h5>;
+function Date(props) {
+  return <h5>{props.problem.date}</h5>;
 }
 
-function Time() {
-  return <h5>10:00 pm</h5>;
+function Time(props) {
+  return <h5>{props.problem.time}</h5>;
 }
 
-function Author() {
-  return <h5>By: Charles</h5>;
+function Author(props) {
+  return <h5>{props.problem.author}</h5>;
 }
 
-function Body() {
-  return <p>Im having trouble with problem 5</p>;
+function Body(props) {
+  return <p>{props.problem.body}</p>;
 }
 
-function Votes() {
-  return <h5>👍 5 | 👎 3</h5>;
+function Votes(props) {
+  return <h5>{props.problem.votes}</h5>;
 }
 
 function Comment() {
   return <h6>Comment1</h6>;
 }
-
-function Blogs() {
+function Blogs(props) {
   return (
-    <div className="Blog">
-      <Title />
-      <Date />
-      <Time />
-      <Author />
-      <Body />
-      <Votes />
-      <Comment />
-      <Comment />
+    <div>
+      {props.problemsData.map((problem) => (
+        <div>
+          <Title problem={problem} />
+          <Date problem={problem} />
+          <Time problem={problem} />
+          <Author problem={problem} />
+          <Body problem={problem} />
+          <Votes problem={problem} />
+          <Comment />
+          <Comment />
+        </div>
+      ))}
     </div>
   );
 }

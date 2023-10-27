@@ -2,26 +2,26 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Blogs from "./Blogs";
 function App() {
-  const [problems, setProblems] = useState([]);
+  const [questions, setQuestions] = useState([]);
   useEffect(() => {
-    fetchProblems()
+    fetchQuestions()
       .then((res) => res.json())
-      .then((json) => setProblems(json["problem_list"]))
+      .then((json) => setQuestions(json["questions_list"]))
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
   // Fetch calls
-  function fetchProblems() {
-    const promise = fetch("http://localhost:8000/problems");
+  function fetchQuestions() {
+    const promise = fetch("http://localhost:8000/questions");
     return promise;
   }
 
   return (
     <div className="Frontpage">
       <h1>Posts</h1>
-      <Blogs problemsData={problems} />
+      <Blogs questionsData={questions} />
     </div>
   );
 }

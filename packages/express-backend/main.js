@@ -1,8 +1,15 @@
 import express from "express";
 import cors from "cors";
+import {
+  getQuestions(),
+  addQuestion(),
+  findQuestionById(),
+  findQuestionByTitle(),
+} from "./question-services.js";
 
-const problems = {
-  problem_list: [
+
+const question = {
+  questions_list: [
     {
       title: "Calc 2 Problem",
       date: "Feburary 14, 2047",
@@ -41,10 +48,17 @@ app.get("/", (req, res) => {
   res.send("This is a test.");
 });
 
-// Get all problems, can rename if needed
-app.get("/problems", (req, res) => {
-  res.send(problems);
+// Get all questions, can rename if needed
+app.get("/questions", (req, res) => {
+  getQuestions().then((response) => res.send(response));
 });
+
+// Post new question
+app.post("/users", (req, res) => {
+  addQuestion(req.body).then((response) => res.status(201).send(response));
+});
+
+
 
 // Start service
 app.listen(port, () => {

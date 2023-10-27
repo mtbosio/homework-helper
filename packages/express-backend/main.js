@@ -21,7 +21,7 @@ const problems = {
     },
     {
       title: "CS Problem",
-      date: "October 31, 2023",
+      date: "October 27, 2023",
       time: "3:33 PM",
       author: "Matt",
       body: "Hehe help me please",

@@ -6,7 +6,7 @@ function App() {
   useEffect(() => {
     fetchQuestions()
       .then((res) => res.json())
-      .then((json) => setQuestions(json["questions_list"]))
+      .then((json) => setQuestions(json))
       .catch((error) => {
         console.log(error);
       });

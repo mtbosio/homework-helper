@@ -1,5 +1,7 @@
 import React from "react";
-
+function Subject(props) {
+  return <h2>{props.question.subject}</h2>;
+}
 function Title(props) {
   return <h1>{props.question.title}</h1>;
 }
@@ -32,12 +34,13 @@ function Blogs(props) {
     <div>
       {props.questionsData.map((question) => (
         <div>
+          <Subject question={question} />
           <Title question={question} />
           <Date question={question} />
           <Time question={question} />
           <Author question={question} />
           <Body question={question} />
-          <Votes question={question} />
+
           <Comment />
           <Comment />
         </div>

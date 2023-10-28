@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
 import {
-  getQuestions(),
-  addQuestion(),
-  findQuestionById(),
-  findQuestionByTitle(),
-} from "./question-services.js";
-
+  getQuestions,
+  addQuestion,
+  findQuestionBySubject,
+  findQuestionByTitle,
+  findQuestionByAuthor,
+} from "./models/question-services.js";
 
 const question = {
   questions_list: [
@@ -57,8 +57,6 @@ app.get("/questions", (req, res) => {
 app.post("/users", (req, res) => {
   addQuestion(req.body).then((response) => res.status(201).send(response));
 });
-
-
 
 // Start service
 app.listen(port, () => {

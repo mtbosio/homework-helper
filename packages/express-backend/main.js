@@ -21,12 +21,10 @@ app.get("/", (req, res) => {
   res.send("This is a test.");
 });
 
-// Get all questions, can rename if needed
-app.get("/question", (req, res) => {
-  getQuestions().then((response) => res.send(response));
-});
+// Get question by id. Idk if we need this because the database creates the id.
+// Might be useful if we want to add a delete later
 
-app.get("/question/:id", (req, res) => {
+/*app.get("/question/:id", (req, res) => {
   const id = req.params["id"];
   let result;
   findQuestionById(id).then((response) => (result = response));
@@ -36,7 +34,9 @@ app.get("/question/:id", (req, res) => {
     res.status(204).send(result);
   }
 });
+*/
 
+// Get question by subject, title, author, or if none specified returns all questions
 app.get("/question", (req, res) => {
   const subject = req.query.subject;
   const title = req.query.title;

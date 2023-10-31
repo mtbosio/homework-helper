@@ -6,8 +6,8 @@ import {
   findQuestionBySubject,
   findQuestionByTitle,
   findQuestionByAuthor,
+  findQuestionById,
 } from "./models/question-services.js";
-
 
 const app = express();
 const port = 8000;
@@ -24,6 +24,24 @@ app.get("/", (req, res) => {
 // Get all questions, can rename if needed
 app.get("/question", (req, res) => {
   getQuestions().then((response) => res.send(response));
+});
+
+app.get("/question/:id", (req, res) => {
+  const id = req.params["id"];
+  let result;
+  findQuestionById(id).then((response) => (result = response));
+  if (result === null) {
+    res.status(404).send("Resource not found.");
+  } else {
+    res.status(204).send(result);
+  }
+});
+
+app.get("/question", (req, res) => {
+  const subject = req.query.subject;
+  const title = req.query.title;
+  const author = req.query.author;
+  getQuestions(subject, title, author).then((response) => res.send(response));
 });
 
 // Post new question

@@ -27,7 +27,8 @@ app.get("/", (req, res) => {
 app.get("/question/:id", (req, res) => {
   const id = req.params["id"];
   findQuestionById(id).then((response) => {
-    if (response === undefined) {
+    console.log(response);
+    if (response === null) {
       res.status(404).send("Resource not found.");
     } else {
       res.send(response);

@@ -33,5 +33,23 @@ app.post("/question", (req, res) => {
 
 // Start service
 app.listen(port, () => {
+
+  // Add a test question:
+  let res = getQuestions();
+  res.then(out => {
+    if (out.length <= 0) {
+      addQuestion({
+        subject: "math",
+        title: "Test Question",
+        date: "11/1/2023",
+        time: "9:29",
+        author: "Bob",
+        body: "Please help me with my question.",
+        votes: 10,
+        comments: ["test comment."]
+      });
+    }
+  });
+
   console.log(`Example app listening at http://localhost:${port}`);
 });

@@ -24,14 +24,13 @@ app.get("/", (req, res) => {
 // Get question by id. Idk if we need this because the database creates the id.
 // Might be useful if we want to add a delete later
 
-app.get("/question/_:id", (req, res) => {
+app.get("/question/:id", (req, res) => {
   const id = req.params["id"];
-  console.log(id);
   findQuestionById(id).then((response) => {
-    if (response === null) {
+    if (response === undefined) {
       res.status(404).send("Resource not found.");
     } else {
-      res.status(204).send(response);
+      res.send(response);
     }
   });
 });

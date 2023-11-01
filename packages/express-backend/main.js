@@ -24,8 +24,9 @@ app.get("/", (req, res) => {
 // Get question by id. Idk if we need this because the database creates the id.
 // Might be useful if we want to add a delete later
 
-app.get("/question/:id", (req, res) => {
+app.get("/question/_:id", (req, res) => {
   const id = req.params["id"];
+  console.log(id);
   findQuestionById(id).then((response) => {
     if (response === null) {
       res.status(404).send("Resource not found.");
@@ -50,11 +51,10 @@ app.post("/question", (req, res) => {
 
 // Start service
 app.listen(port, () => {
-
   // Add a test question:
   let res = getQuestions();
-  res.then(out => {
-    if (out.length <= 0) {
+  res.then((out) => {
+    if (out.length <= 1) {
       addQuestion({
         subject: "math",
         title: "Test Question",
@@ -63,7 +63,7 @@ app.listen(port, () => {
         author: "Bob",
         body: "Please help me with my question.",
         votes: 10,
-        comments: ["test comment."]
+        comments: ["test comment."],
       });
     }
   });

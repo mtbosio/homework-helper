@@ -16,14 +16,7 @@ app.use(express.json());
 app.use(cors());
 // API endpoint definitions go here
 
-// Test API
-app.get("/", (req, res) => {
-  res.send("This is a test.");
-});
-
-// Get question by id. Idk if we need this because the database creates the id.
-// Might be useful if we want to add a delete later
-
+// Get a single question by ID
 app.get("/questions/:id", (req, res) => {
   const id = req.params["id"];
   findQuestionById(id).then((response) => {

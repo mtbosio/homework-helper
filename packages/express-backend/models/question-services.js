@@ -40,19 +40,11 @@ function findQuestionByTitle(title) {
   return questionModel.find({ title: title });
 }
 
-/*function deleteUserById(id) {
-  return questionModel.findByIdAndDelete(id);
-}*/
-
 function addQuestion(question) {
   const questionToAdd = new questionModel(question);
   const promise = questionToAdd.save();
   return promise;
 }
-
-/*function deleteUser(user) {
-  return questionModel.deleteOne({_id: user._id});
-}*/
 
 export {
   addQuestion,

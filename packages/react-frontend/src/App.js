@@ -1,6 +1,7 @@
-import "./App.css";
 import React, { useState, useEffect } from "react";
 import Blogs from "./Blogs";
+import { fetchQuestions } from "./apis";
+
 function App() {
   const [questions, setQuestions] = useState([]);
   useEffect(() => {
@@ -11,12 +12,6 @@ function App() {
         console.log(error);
       });
   }, []);
-
-  // Fetch calls
-  function fetchQuestions() {
-    const promise = fetch("http://localhost:8000/questions");
-    return promise;
-  }
 
   return (
     <div className="Frontpage">

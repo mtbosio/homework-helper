@@ -6,8 +6,8 @@ import {
   findQuestionBySubject,
   findQuestionByTitle,
   findQuestionByAuthor,
+  findQuestionById,
 } from "./models/question-services.js";
-
 
 const app = express();
 const port = 8000;
@@ -21,23 +21,40 @@ app.get("/", (req, res) => {
   res.send("This is a test.");
 });
 
-// Get all questions, can rename if needed
-app.get("/question", (req, res) => {
-  getQuestions().then((response) => res.send(response));
+// Get question by id. Idk if we need this because the database creates the id.
+// Might be useful if we want to add a delete later
+
+app.get("/questions/:id", (req, res) => {
+  const id = req.params["id"];
+  findQuestionById(id).then((response) => {
+    console.log(response);
+    if (response === null) {
+      res.status(404).send("Resource not found.");
+    } else {
+      res.send(response);
+    }
+  });
+});
+
+// Get question by subject, title, author, or if none specified returns all questions
+app.get("/questions", (req, res) => {
+  const subject = req.query.subject;
+  const title = req.query.title;
+  const author = req.query.author;
+  getQuestions(subject, title, author).then((response) => res.send(response));
 });
 
 // Post new question
-app.post("/question", (req, res) => {
+app.post("/questions", (req, res) => {
   addQuestion(req.body).then((response) => res.status(201).send(response));
 });
 
 // Start service
 app.listen(port, () => {
-
   // Add a test question:
   let res = getQuestions();
-  res.then(out => {
-    if (out.length <= 0) {
+  res.then((out) => {
+    if (out.length <= 1) {
       addQuestion({
         subject: "math",
         title: "Test Question",
@@ -46,7 +63,7 @@ app.listen(port, () => {
         author: "Bob",
         body: "Please help me with my question.",
         votes: 10,
-        comments: ["test comment."]
+        comments: ["test comment."],
       });
     }
   });

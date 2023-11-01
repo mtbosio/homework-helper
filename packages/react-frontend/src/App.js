@@ -14,7 +14,7 @@ function App() {
 
   // Fetch calls
   function fetchQuestions() {
-    const promise = fetch("http://localhost:8000/question");
+    const promise = fetch("http://localhost:8000/questions");
     return promise;
   }
 

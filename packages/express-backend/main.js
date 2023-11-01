@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 // Get question by id. Idk if we need this because the database creates the id.
 // Might be useful if we want to add a delete later
 
-app.get("/question/:id", (req, res) => {
+app.get("/questions/:id", (req, res) => {
   const id = req.params["id"];
   findQuestionById(id).then((response) => {
     console.log(response);
@@ -37,7 +37,7 @@ app.get("/question/:id", (req, res) => {
 });
 
 // Get question by subject, title, author, or if none specified returns all questions
-app.get("/question", (req, res) => {
+app.get("/questions", (req, res) => {
   const subject = req.query.subject;
   const title = req.query.title;
   const author = req.query.author;
@@ -45,7 +45,7 @@ app.get("/question", (req, res) => {
 });
 
 // Post new question
-app.post("/question", (req, res) => {
+app.post("/questions", (req, res) => {
   addQuestion(req.body).then((response) => res.status(201).send(response));
 });
 

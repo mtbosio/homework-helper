@@ -1,52 +1,52 @@
 import React from "react";
-function Subject(props) {
-  return <h2>{props.question.subject}</h2>;
-}
-function Title(props) {
-  return <h1>{props.question.title}</h1>;
+
+function Blog(props) {
+  return <div style={{
+      margin: "20px auto",
+      width: "640px",
+      border: "1px solid #E5E7EB", 
+      borderRadius: "12px", 
+      boxShadow: "0 3px 1px -1px #E5E7EB",
+      padding: "0px"}}>
+    
+    {/* Title */}
+    <div style={{
+        borderBottom: "1px solid #E5E7EB"}}>
+      <h3 style={{
+        margin: "0px 10px"
+      }}>{props.question.title}</h3>
+    </div>
+
+    {/* Question Body */}
+    <div style={{
+        borderBottom: "1px solid #E5E7EB"}}>
+      <p style={{
+        margin: "7px 10px"
+      }}>
+        {props.question.body}
+      </p>
+    </div>
+
+    {/* Footer */}
+    <div>
+      <p style={{
+        margin: "3px 10px"
+      }}>
+        Subject: {props.question.subject} | Author: {props.question.author} | Votes: {props.question.votes} | Comments: {props.question.comments.length}
+      </p>
+    </div>
+  </div>
 }
 
-function Date(props) {
-  return <h5>{props.question.date}</h5>;
-}
-
-function Time(props) {
-  return <h5>{props.question.time}</h5>;
-}
-
-function Author(props) {
-  return <h5>{props.question.author}</h5>;
-}
-
-function Body(props) {
-  return <p>{props.question.body}</p>;
-}
-
-function Votes(props) {
-  return <h5>{props.question.votes}</h5>;
-}
-
-function Comment() {
-  return <h6>Comment1</h6>;
-}
 function Blogs(props) {
   return (
-    <div>
+    <div style={{display: "block"}}>
       {props.questionsData.map((question) => (
-        <div>
-          <Subject question={question} />
-          <Title question={question} />
-          <Date question={question} />
-          <Time question={question} />
-          <Author question={question} />
-          <Body question={question} />
-
-          <Comment />
-          <Comment />
-        </div>
+        <Blog question={question}/>
       ))}
     </div>
   );
 }
+
 
 export default Blogs;

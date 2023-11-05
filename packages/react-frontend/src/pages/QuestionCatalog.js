@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Blogs from "./Blogs";
-import { fetchQuestions } from "./apis";
+import Blogs from "../Blogs";
+import { fetchQuestions } from "../apis";
+import { Link } from "react-router-dom";
 
-function App() {
+function QuestionCatalog() {
   const [questions, setQuestions] = useState([]);
   useEffect(() => {
     fetchQuestions()
@@ -16,9 +17,10 @@ function App() {
   return (
     <div className="Frontpage">
       <h1>Posts</h1>
+      <Link to="/new"><button>New Question</button></Link>
       <Blogs questionsData={questions} />
     </div>
   );
 }
 
-export default App;
+export default QuestionCatalog;

@@ -39,6 +39,8 @@ app.get("/questions", (req, res) => {
 
 // Post new question
 app.post("/questions", (req, res) => {
+  console.log("question posted:");
+  console.log(req.body);
   addQuestion(req.body).then((response) => res.status(201).send(response));
 });
 

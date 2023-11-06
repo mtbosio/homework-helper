@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {useForm} from "react"
+import { postQuestion } from "../apis";
 
 function NewQuestion() {
     const [question, setQuestion] = useState({
@@ -9,16 +10,32 @@ function NewQuestion() {
         body: ""
     })
 
-    const handleSubmit = (event) => {
-        alert(`The question: ${question}`);
+    function handleChange(event) {
+        setQuestion(values => ({...question, [event.target.id]: event.target.value}));
     }
 
-    return (<div>
+    function handleSubmit(event) {
+        event.preventDefault();
+        postQuestion({
+            subject: question.subject,
+            title: question.title,
+            date: "Nov 6, 2023",
+            time: "2:32 P.M.",
+            author: question.author,
+            body: question.body,
+            votes: 0,
+            comments: []
+        }).then(res => console.log(res)).catch(exception => console.log(exception));
+    }
+
+    return (
         <form onSubmit={handleSubmit}>
-            <label>Here is a field <input type="text"/></label>
-            <input type="submit"/>
-        </form>
-    </div>)
+            <label>Title <input id="title" type="text" value={question.title} onChange={handleChange}/></label>
+            <label>Subject <input id="subject" type="text" value={question.subject} onChange={handleChange}/></label>
+            <label>Name <input id="author" type="text" value={question.author} onChange={handleChange}/></label>
+            <label>Question <input id="body" type="text" value={question.body} onChange={handleChange}/></label>
+            <button type="submit">Post</button>
+        </form>)
 }
 
 export default NewQuestion;

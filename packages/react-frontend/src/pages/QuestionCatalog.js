@@ -17,7 +17,9 @@ function QuestionCatalog() {
   return (
     <div className="Frontpage">
       <h1>Posts</h1>
-      <Link to="/new"><button>New Question</button></Link>
+      <Link to="/new">
+        <button>New Question</button>
+      </Link>
       <Blogs questionsData={questions} />
     </div>
   );

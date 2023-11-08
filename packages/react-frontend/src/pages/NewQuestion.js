@@ -21,12 +21,8 @@ function NewQuestion() {
     postQuestion({
       subject: question.subject,
       title: question.title,
-      date: "Nov 6, 2023",
-      time: "2:32 P.M.",
       author: question.author,
-      body: question.body,
-      votes: 0,
-      comments: [],
+      body: question.body
     })
       .then((res) => console.log(res))
       .catch((exception) => console.log(exception));

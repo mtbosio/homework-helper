@@ -40,7 +40,18 @@ function findQuestionByTitle(title) {
   return questionModel.find({ title: title });
 }
 
-function addQuestion(question) {
+function addQuestion(userQuestion) {
+  const date = new Date();
+  const question = {
+    subject: userQuestion.subject,
+    title: userQuestion.title,
+    author: userQuestion.author,
+    body: userQuestion.body,
+    date: date.toDateString(),
+    time: date.toLocaleTimeString(),
+    votes: 0,
+    comments: [],
+  }
   const questionToAdd = new questionModel(question);
   const promise = questionToAdd.save();
   return promise;

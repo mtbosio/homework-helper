@@ -2,11 +2,11 @@
   "name": "homework-helper",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-    "backend": "npm -w express-backend start",
-    "backend-dev": "npm -w express-backend run dev",
-    "frontend": "npm -w react-frontend start",
-    "format": "npx prettier --write . && npx eslint ."
+  "scripts": {      
+	  "lint": "npx eslint . && npx prettier --check .",
+	  "test": "echo \"Error: no test specified\"",
+	  "dev": "nodemon main.js",
+	  "start": "node main.js"
   },
   "workspaces": [
     "packages/*"

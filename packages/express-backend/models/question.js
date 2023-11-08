@@ -47,7 +47,7 @@ const QuestionSchema = new mongoose.Schema(
       trim: true,
     },
   },
-  { collection: "questions_list" }
+  { collection: "questions_list" },
 );
 
 const Question = mongoose.model("Question", QuestionSchema);

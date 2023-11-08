@@ -5,7 +5,8 @@
   "scripts": {
     "backend": "npm -w express-backend start",
     "backend-dev": "npm -w express-backend run dev",
-    "frontend": "npm -w react-frontend start"
+    "frontend": "npm -w react-frontend start",
+    "format": "npx prettier --write . && npx eslint ."
   },
   "workspaces": [
     "packages/*"
@@ -14,5 +15,10 @@
   "license": "ISC",
   "dependencies": {
     "create-react-app": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "3.0.3"
   }
 }

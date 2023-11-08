@@ -1,11 +1,8 @@
-import express, { response } from "express";
+import express from "express";
 import cors from "cors";
 import {
   getQuestions,
   addQuestion,
-  findQuestionBySubject,
-  findQuestionByTitle,
-  findQuestionByAuthor,
   findQuestionById,
 } from "./models/question-services.js";
 
@@ -41,7 +38,7 @@ app.get("/questions", (req, res) => {
 app.post("/questions", (req, res) => {
   addQuestion(req.body)
     .then((response) => res.status(201).send(response))
-    .catch((err) => {
+    .catch(() => {
       console.log(res.status(400).send("Invalid Formatting"));
     });
 });

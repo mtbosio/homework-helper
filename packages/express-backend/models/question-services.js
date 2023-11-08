@@ -3,10 +3,6 @@ import questionModel from "./question.js";
 import dotenv from "dotenv";
 
 dotenv.config()
-console.log("MONGO_USER=", process.env.MONGO_USER)
-console.log("MONGO_PWD=", process.env.MONGO_PWD)
-console.log("MONGO_DB=", process.env.MONGO_DB)
-console.log("MONGO_CLUSTER=", process.env.MONGO_CLUSTER)
 
 mongoose.set("debug", true);
 

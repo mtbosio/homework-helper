@@ -13,4 +13,8 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+<<<<<<< HEAD
       - run: npm run format
+=======
+      - run: npm run format
+>>>>>>> 43ae1dc (Changed run commands)

@@ -36,7 +36,11 @@ app.get("/questions", (req, res) => {
 
 // Post new question
 app.post("/questions", (req, res) => {
-  addQuestion(req.body).then((response) => res.status(201).send(response));
+  addQuestion(req.body)
+    .then((response) => res.status(201).send(response))
+    .catch((err) => {
+      console.log(res.status(400).send("Invalid Formatting"));
+    });
 });
 
 // Start service

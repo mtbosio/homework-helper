@@ -6,7 +6,8 @@
 	  "lint": "npx eslint . && npx prettier --check .",
 	  "test": "echo \"Error: no test specified\"",
 	  "dev": "nodemon main.js",
-	  "start": "node main.js"
+	  "start": "node main.js",
+    "format": "npx prettier --write . && npx eslint ."
   },
   "workspaces": [
     "packages/*"

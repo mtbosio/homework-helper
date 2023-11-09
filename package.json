@@ -2,11 +2,11 @@
   "name": "homework-helper",
   "version": "1.0.0",
   "description": "",
-  "scripts": {      
-	  "lint": "npx eslint . && npx prettier --check .",
-	  "test": "echo \"Error: no test specified\"",
-	  "dev": "nodemon main.js",
-	  "start": "node main.js",
+  "scripts": {
+    "lint": "npx eslint . && npx prettier --check .",
+    "test": "echo \"Error: no test specified\"",
+    "dev": "nodemon main.js",
+    "start": "node main.js",
     "format": "npx prettier --write . && npx eslint ."
   },
   "workspaces": [

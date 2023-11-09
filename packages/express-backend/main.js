@@ -8,9 +8,13 @@ import {
 
 const app = express();
 const port = 5000;
-
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 // API endpoint definitions go here
 
 // Get a single question by ID

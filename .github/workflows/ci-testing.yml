@@ -2,7 +2,7 @@ name: CI Testing
 
 on:
   push:
-    branches: [Azure]
+    branches: [main]
 
 jobs:
   build:

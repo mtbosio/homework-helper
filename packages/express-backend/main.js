@@ -8,11 +8,11 @@ import {
 
 const app = express();
 const port = 5000;
+
 const corsOptions = {
-  origin: "*",
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
+  origin: "https://lemon-sand-0ec997c1e.4.azurestaticapps.net",
 };
+
 app.use(express.json());
 app.use(cors(corsOptions));
 // API endpoint definitions go here

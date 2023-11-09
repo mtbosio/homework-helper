@@ -9,12 +9,8 @@ import {
 const app = express();
 const port = 5000;
 
-const corsOptions = {
-  origin: "https://lemon-sand-0ec997c1e.4.azurestaticapps.net",
-};
-
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors());
 // API endpoint definitions go here
 
 // Get a single question by ID

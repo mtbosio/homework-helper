@@ -2,20 +2,15 @@ import mongoose from "mongoose";
 import questionModel from "./question.js";
 import dotenv from "dotenv";
 
-dotenv.config()
-<<<<<<< HEAD
-=======
+dotenv.config();
 console.log("MONGO_USER=", process.env.MONGO_USER)
 console.log("MONGO_PWD=", process.env.MONGO_PWD)
 console.log("MONGO_DB=", process.env.MONGO_DB)
 console.log("MONGO_CLUSTER=", process.env.MONGO_CLUSTER)
->>>>>>> 7335118 (Set up MongoDB Atlas)
 
 mongoose.set("debug", true);
 
-mongoose
-<<<<<<< HEAD
-  .connect(
+mongoose.connect(
     "mongodb+srv://" +
       process.env.MONGO_USER +
       ":" +
@@ -32,25 +27,6 @@ mongoose
     },
   )
   .catch((error) => console.log(error));
-=======
-.connect(
-  "mongodb+srv://" +
-    process.env.MONGO_USER +
-    ":" +
-    process.env.MONGO_PWD +
-    "@" +
-    process.env.MONGO_CLUSTER +
-    "/" +
-    process.env.MONGO_DB +
-    "?retryWrites=true&w=majority",
-  // "mongodb://localhost:27017/users",
-  {
-    useNewUrlParser: true, //useFindAndModify: false,
-    useUnifiedTopology: true,
-  }
-)
-.catch((error) => console.log(error));
->>>>>>> 7335118 (Set up MongoDB Atlas)
 
 function getQuestions(subject, title, author) {
   let promise;

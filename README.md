@@ -9,8 +9,9 @@ Prettier: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vs
 ESLint: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
 ## .env file goes in express-backend folder
+
 MONGO_URI=mongodb+srv://hhelper:do6Wh8j9UAkK56WO@cluster0.ixyccjk.mongodb.net/Question?retryWrites=true&w=majority  
 MONGO_USER=hhelper  
 MONGO_PWD=do6Wh8j9UAkK56WO  
 MONGO_DB=Question  
-MONGO_CLUSTER=cluster0.ixyccjk.mongodb.net  
+MONGO_CLUSTER=cluster0.ixyccjk.mongodb.net

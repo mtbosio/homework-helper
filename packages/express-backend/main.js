@@ -9,12 +9,19 @@ import {
 const app = express();
 const port = 5000;
 
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
+app.options("*", cors());
 // API endpoint definitions go here
 
 // Get a single question by ID
-app.get("/questions/:id", (req, res) => {
+app.get("/questions/:id", cors(), (req, res) => {
   const id = req.params["id"];
   findQuestionById(id).then((response) => {
     console.log(response);
@@ -27,15 +34,17 @@ app.get("/questions/:id", (req, res) => {
 });
 
 // Get question by subject, title, author, or if none specified returns all questions
-app.get("/questions", (req, res) => {
+app.get("/questions", cors(), (req, res) => {
   const subject = req.query.subject;
   const title = req.query.title;
   const author = req.query.author;
-  getQuestions(subject, title, author).then((response) => res.send(response));
+  getQuestions(subject, title, author).then((response) =>
+    res.status(200).send(response),
+  );
 });
 
 // Post new question
-app.post("/questions", (req, res) => {
+app.post("/questions", cors(), (req, res) => {
   addQuestion(req.body)
     .then((response) => res.status(201).send(response))
     .catch(() => {

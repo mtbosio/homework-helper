@@ -38,9 +38,18 @@ app.get("/questions", cors(), (req, res) => {
   const subject = req.query.subject;
   const title = req.query.title;
   const author = req.query.author;
-  getQuestions(subject, title, author).then((response) =>
-    res.status(200).send(response),
-  );
+  getQuestions(subject, title, author).then((response) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, PATCH, DELETE",
+    );
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Authorization",
+    );
+    res.status(200).send(response);
+  });
 });
 
 // Post new question

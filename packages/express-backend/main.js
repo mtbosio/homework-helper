@@ -10,7 +10,7 @@ const app = express();
 const port = 5000;
 
 const corsOptions = {
-  origin: "*",
+  origin: "https://lemon-sand-0ec997c1e.4.azurestaticapps.net/",
 };
 
 app.use(express.json());

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import questionModel from "./question.js";
 import dotenv from "dotenv";
+import sanitizeHtml from 'sanitize-html';
 
 dotenv.config();
 console.log("MONGO_USER=", process.env.MONGO_USER);
@@ -62,10 +63,10 @@ function findQuestionByTitle(title) {
 function addQuestion(userQuestion) {
   const date = new Date();
   const question = {
-    subject: userQuestion.subject,
-    title: userQuestion.title,
-    author: userQuestion.author,
-    body: userQuestion.body,
+    subject: sanitizeHtml(userQuestion.subject),
+    title: sanitizeHtml(userQuestion.title),
+    author: sanitizeHtml(userQuestion.author),
+    body: sanitizeHtml(userQuestion.body),
     date: date.toDateString(),
     time: date.toLocaleTimeString(),
     votes: 0,

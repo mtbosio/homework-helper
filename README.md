@@ -6,8 +6,4 @@ This project uses ESLint and Prettier to format and check for issues. Use `npm r
 
 Prettier: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
-<<<<<<< HEAD
 ESLint: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-=======
-ESLint: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
->>>>>>> b5ae5ba (Update README.md)

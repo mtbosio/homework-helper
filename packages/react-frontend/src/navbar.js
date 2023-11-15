@@ -1,5 +1,4 @@
 import "./navbar.css";
-import Blogs from "./Blogs";
 import { Link } from "react-router-dom";
 
 

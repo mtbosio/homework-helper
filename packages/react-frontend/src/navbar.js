@@ -5,7 +5,7 @@ const Navbar = () => {
         <div class="tr">
           <div class="topnav">
             <div class="d1">
-              <a class="active" href="">
+              <a class="active" href="/">
                 Homework Help
               </a>
             </div>

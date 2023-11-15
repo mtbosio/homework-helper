@@ -14,11 +14,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "create-react-app": "^5.0.1"
+    "create-react-app": "^1.2.1",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "eslint": "^8.53.0",
-    "eslint-plugin-react": "^7.33.2",
     "prettier": "3.0.3"
   }
 }

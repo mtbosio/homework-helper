@@ -1,3 +1,8 @@
+import "./navbar.css";
+import Blogs from "./Blogs";
+import { Link } from "react-router-dom";
+
+
 const Navbar = () => {
   return (
     <nav>
@@ -13,7 +18,9 @@ const Navbar = () => {
               <input type="text" placeholder="Search"></input>
             </div>
             <div class="d3">
-              <button class="newpost">New Post</button>
+                <Link to="/new">
+                    <button class="newpost">New Question</button>
+                </Link>
             </div>
           </div>
         </div>

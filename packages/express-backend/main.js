@@ -1,5 +1,7 @@
 import express from "express";
+import AccessControl from 'express-ip-access-control';
 import cors from "cors";
+import dotenv from "dotenv";
 import {
   getQuestions,
   addQuestion,
@@ -16,6 +18,14 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 app.options("*", cors());
+
+dotenv.config();
+console.log(process.env.IP_ALLOW);
+app.use(AccessControl({
+  mode: 'allow',
+  allows: [process.env.IP_ALLOW],
+}));
+
 // API endpoint definitions go here
 
 // Get a single question by ID

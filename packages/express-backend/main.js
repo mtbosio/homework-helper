@@ -7,7 +7,7 @@ import {
 } from "./models/question-services.js";
 
 const app = express();
-const port = 5000;
+const port = 8000;
 
 const corsOptions = {
   origin: "https://lemon-sand-0ec997c1e.4.azurestaticapps.net/",

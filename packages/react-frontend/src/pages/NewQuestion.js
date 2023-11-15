@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { postQuestion } from "../apis";
+import { useNavigate } from "react-router-dom";
 
 function NewQuestion() {
+  const navigate = useNavigate();
   const [question, setQuestion] = useState({
     subject: "",
     title: "",
@@ -24,7 +26,10 @@ function NewQuestion() {
       author: question.author,
       body: question.body
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        navigate('/');
+      })
       .catch((exception) => console.log(exception));
   }
 

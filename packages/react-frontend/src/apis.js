@@ -1,21 +1,29 @@
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
 
+var url;
+
+if (process.env.REACT_APP_IS_LOCAL) {
+  url = "http://localhost:8000";
+} else {
+  url = "https://homework-helper.azurewebsites.net";
+}
 function fetchQuestions() {
-  const promise = fetch("https://homework-helper.azurewebsites.net/questions");
+  const promise = fetch(`${url}/questions`);
   return promise;
 }
 
 function getQuestion(id) {
+  console.log(url);
   const promise = fetch(
-    `https://homework-helper.azurewebsites.net/questions/${id}`,
+    `${url}/questions/${id}`,
   );
   return promise;
 }
 
 function postQuestion(question) {
   console.log(JSON.stringify(question));
-  const promise = fetch("http://localhost:8000/questions", {
+  const promise = fetch(`${url}/questions`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(question),

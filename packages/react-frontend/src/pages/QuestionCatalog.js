@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Blogs from "../Blogs";
 import { fetchQuestions } from "../apis";
-import { Link } from "react-router-dom";
 import Navbar from "../navbar";
 
 function QuestionCatalog() {

@@ -7,10 +7,10 @@ import {
 } from "./models/question-services.js";
 
 const app = express();
-const port = 5000;
+const port = 8000;
 
 const corsOptions = {
-  origin: "*",
+  origin: ["https://lemon-sand-0ec997c1e.4.azurestaticapps.net/","http://localhost:3000"],
 };
 
 app.use(express.json());
@@ -37,15 +37,6 @@ app.get("/questions", cors(), (req, res) => {
   const title = req.query.title;
   const author = req.query.author;
   getQuestions(subject, title, author).then((response) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, PUT, PATCH, DELETE",
-    );
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization",
-    );
     res.status(200).send(response);
   });
 });

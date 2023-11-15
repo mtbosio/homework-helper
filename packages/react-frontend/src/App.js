@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Blogs from "./Blogs";
 import { fetchQuestions } from "./apis";
+import Navbar from "./navbar";
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div className="Frontpage">
+      <Navbar navbar>navbar</Navbar>
       <h1>Posts</h1>
       <Blogs questionsData={questions} />
     </div>

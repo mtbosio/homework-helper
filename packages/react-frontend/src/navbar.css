@@ -1,88 +1,83 @@
 /* navbar.css */
 
 nav {
-  background-color: #333; /* Dark navbar background */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-}
+    background-color: black; /* Dark navbar background */
+    padding: 10px 20px;
+  }
 
-.topnav {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
+  .topnav {
+    display: flex;
+    grid-template-columns: repeat(3, 1fr); /* Creates three columns of equal width */
+    width: 100%;
+    align-items: center;
+  }
 
-.d1 {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
+  .tr {
+    display: flex; /* This makes it a flex row */
+    width: 100%; /* Sets the width of the row */
+  }
 
-.d1 a {
-  text-decoration: none;
-  color: white;
-  font-size: 24px; /* Adjusted for visibility */
-  font-weight: bold;
-  margin-right: 50px; /* Space after the logo */
-}
+  .d1 {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    align-items: left;
+  }
 
-.d1 a.active {
-  color: white; /* Active link color */
-}
+  .d1 a {
+    text-decoration: none;
+    font-size: 24px; 
+    font-weight: bold;
+  }
 
-.d2 {
-  flex-grow: 2;
-  display: flex;
-  justify-content: center; /* Centers the search bar */
-}
+  .d1 a.active {
+    color: white;
+  }
 
-.d2 input[type="text"] {
-  width: 40%; /* Adjusted width */
-  padding: 8px 16px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 20px; /* Rounded borders for the input */
-  outline: none;
-}
-
-.d2 input[type="text"]:focus {
-  border-color: gray; /* Highlight color when focused */
-}
-
-.d3 {
-  flex-grow: 1;
-  display: flex;
-  justify-content: flex-end; /* Aligns the button to the right */
-}
-
-.d3 button.newpost {
-  background-color: gray; /* Button color */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 20px; /* Rounded borders for the button */
-  outline: none;
-}
-
-.d3 button.newpost:hover {
-  background-color: #033a2b; /* Darken the button on hover */
-}
-
-/* Responsive adjustments */
-@media screen and (max-width: 768px) {
-  .topnav .d1,
-  .topnav .d2,
-  .topnav .d3 {
-    flex: 1 0 100%;
-    justify-content: center;
-    margin-top: 10px;
+  .d2 {
+    display: flex;
+    flex: 1;
+    width: 200%;
+    justify-content: center; 
   }
 
   .d2 input[type="text"] {
-    width: 80%; /* Makes the search bar wider on smaller screens */
+    text-align: left;
+    padding: 8px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Rounded borders for the input */
+    outline: none;
+    background-color: #313131;
+    border: none;
+    color: white;
+
   }
-}
+
+  .d2 input[type="text"]:focus {
+    border-color: gray;
+    text-align: left;
+  }
+
+  .d3 {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    justify-content: flex-end; /* Aligns the button to the right */
+  }
+
+  .d3 button.newpost {
+    background-color: #303030; /* Button color */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 8px; /* Rounded borders for the button */
+    outline: none;
+  }
+
+
+  .d3 button.newpost:hover {
+    background-color: gray /* Darken the button on hover */
+  }

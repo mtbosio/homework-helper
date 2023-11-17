@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Blogs from "./Blogs";
-import { fetchQuestions } from "./apis";
-import Navbar from "./navbar";
+import Blogs from "../Blogs";
+import { fetchQuestions } from "../apis";
+import Navbar from "../navbar";
 
-function App() {
+function QuestionCatalog() {
   const [questions, setQuestions] = useState([]);
   useEffect(() => {
     fetchQuestions()
@@ -23,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default QuestionCatalog;

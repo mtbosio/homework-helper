@@ -1,5 +1,7 @@
 import express from "express";
+//import AccessControl from "express-ip-access-control";
 import cors from "cors";
+//import dotenv from "dotenv";
 import {
   getQuestions,
   addQuestion,
@@ -10,12 +12,24 @@ const app = express();
 const port = 8000;
 
 const corsOptions = {
-  origin: "https://lemon-sand-0ec997c1e.4.azurestaticapps.net/",
+  origin: [
+    "https://lemon-sand-0ec997c1e.4.azurestaticapps.net/",
+    "http://localhost:3000",
+  ],
 };
 
 app.use(express.json());
 app.use(cors(corsOptions));
 app.options("*", cors());
+
+// dotenv.config();
+// app.use(
+//   AccessControl({
+//     mode: "allow",
+//     allows: [process.env.IP_ALLOW],
+//   }),
+// );
+
 // API endpoint definitions go here
 
 // Get a single question by ID

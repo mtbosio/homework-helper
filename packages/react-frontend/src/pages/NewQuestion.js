@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../navbar";
 import "./NewQuestion.css";
 
-
 function NewQuestion() {
   const navigate = useNavigate();
   const [question, setQuestion] = useState({

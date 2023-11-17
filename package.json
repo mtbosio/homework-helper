@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "lint": "npx eslint . && npx prettier --check .",
-    "test": "echo \"Error: no test specified\"",
-    "dev": "nodemon main.js",
-    "start": "node main.js",
+    "dev-frontend": "npm -w react-frontend run start-local",
+    "dev-backend": "npm -w express-backend run dev",
     "format": "npx prettier --write . && npx eslint ."
   },
   "workspaces": [

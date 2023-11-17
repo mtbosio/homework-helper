@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { ObjectID, Object } from "mongoose";
 
 const QuestionSchema = new mongoose.Schema(
   {
@@ -17,12 +18,7 @@ const QuestionSchema = new mongoose.Schema(
       },
     },
     date: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    time: {
-      type: String,
+      type: Date,
       required: true,
       trim: true,
     },
@@ -42,7 +38,7 @@ const QuestionSchema = new mongoose.Schema(
       trim: true,
     },
     comments: {
-      type: [String],
+      type: [Object],
       required: true,
       trim: true,
     },

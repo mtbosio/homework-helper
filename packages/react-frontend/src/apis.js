@@ -14,7 +14,6 @@ function fetchQuestions() {
 }
 
 function getQuestion(id) {
-  console.log(url);
   const promise = fetch(`${url}/questions/${id}`);
   return promise;
 }

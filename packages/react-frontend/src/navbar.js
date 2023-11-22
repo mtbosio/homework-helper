@@ -1,5 +1,44 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import { login, logout } from "./apis.js";
+import { useState } from "react";
+
+const UserInfo = (props) => {
+  const [name, setName] = useState();
+
+  const onLogin = (response) => {
+    login(response.credential)
+      .then((res) => res.json())
+      .then((json) => {
+        setName(json.name);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const onLoginError = (response) => {
+    console.log(response);
+  };
+
+  const onLogout = () => {
+    logout()
+      .then(setName(undefined))
+      .catch((err) => console.log(err));
+  };
+
+  if (name) {
+    return <button onClick={onLogout}>{name}: Logout</button>;
+  } else {
+    return (
+      <GoogleLogin
+        onSuccess={onLogin}
+        onError={onLoginError}
+        shape="circle"
+        size="medium"
+      />
+    );
+  }
+};
 
 const Navbar = () => {
   return (
@@ -19,6 +58,7 @@ const Navbar = () => {
               <Link to="/new">
                 <button class="newpost">New Question</button>
               </Link>
+              <UserInfo />
             </div>
           </div>
         </div>

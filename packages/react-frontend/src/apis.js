@@ -4,29 +4,47 @@ headers.append("Content-Type", "application/json");
 var url;
 
 if (process.env.REACT_APP_IS_LOCAL) {
-  url = "http://localhost:8000";
+  url = "http://localhost:3000";
 } else {
-  url = "https://homework-helper.azurewebsites.net";
+  url = "https://lemon-sand-0ec997c1e.4.azurestaticapps.net/";
 }
+
 function fetchQuestions() {
-  const promise = fetch(`${url}/questions`);
+  const promise = fetch(`${url}/questions`, { credentials: "same-origin" });
   return promise;
 }
 
 function getQuestion(id) {
-  console.log(url);
-  const promise = fetch(`${url}/questions/${id}`);
-  return promise;
-}
-
-function postQuestion(question) {
-  console.log(JSON.stringify(question));
-  const promise = fetch(`${url}/questions`, {
-    method: "POST",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify(question),
+  const promise = fetch(`${url}/questions/${id}`, {
+    credentials: "same-origin",
   });
   return promise;
 }
 
-export { fetchQuestions, getQuestion, postQuestion };
+function postQuestion(question) {
+  const promise = fetch(`${url}/questions`, {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(question),
+    credentials: "same-origin",
+  });
+  return promise;
+}
+
+function login(credential) {
+  return fetch(`${url}/login`, {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({ credential: credential }),
+    credentials: "same-origin",
+  });
+}
+
+function logout() {
+  return fetch(`${url}/logout`, {
+    method: "GET",
+    credentials: "same-origin",
+  });
+}
+
+export { fetchQuestions, getQuestion, postQuestion, login, logout };

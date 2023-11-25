@@ -1,22 +1,6 @@
-import { useParams } from "react-router-dom";
-import { getQuestion } from "../apis";
-import React, { useState, useEffect } from "react";
-import CommentCatalog from "./CommentCatalog";
-export default function IndividualQuestion() {
-  const params = useParams();
-  const [question, setQuestion] = useState({
-    subject: "",
-    title: "",
-    author: "",
-    body: "",
-  });
+import React from "react";
 
-  useEffect(() => {
-    getQuestion(params.id)
-      .then((response) => response.json())
-      .then((question) => setQuestion(question));
-  }, [params]);
-
+function Comment(props) {
   return (
     <div
       style={{
@@ -28,7 +12,8 @@ export default function IndividualQuestion() {
         padding: "0px",
       }}
     >
-      <div
+      {/* Title */}
+      <p
         style={{
           borderBottom: "1px solid #E5E7EB",
         }}
@@ -38,9 +23,9 @@ export default function IndividualQuestion() {
             margin: "0px 10px",
           }}
         >
-          {question.title}
+          {props.comment.author}
         </h3>
-      </div>
+      </p>
 
       {/* Question Body */}
       <div
@@ -53,7 +38,7 @@ export default function IndividualQuestion() {
             margin: "7px 10px",
           }}
         >
-          {question.body}
+          {props.comment.body}
         </p>
       </div>
 
@@ -64,11 +49,21 @@ export default function IndividualQuestion() {
             margin: "3px 10px",
           }}
         >
-          Subject: {question.subject} | Author: {question.author} | Votes:{" "}
-          {question.votes} | Comments: 0
+          Date: {props.comment.date}
         </p>
       </div>
-      <CommentCatalog questionID={params.id} />
     </div>
   );
 }
+
+function Comments(props) {
+  return (
+    <div style={{ display: "block" }}>
+      {props.commentsData.map((comment) => (
+        <Comment comment={comment} />
+      ))}
+    </div>
+  );
+}
+
+export default Comments;

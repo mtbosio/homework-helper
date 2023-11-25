@@ -1,6 +1,7 @@
 # homework-helper
 
 ## Running locally
+
 To run the frontend locally, use:
 
 ```

@@ -22,7 +22,7 @@ mongoose
       "/" +
       process.env.MONGO_DB +
       "?retryWrites=true&w=majority",
-    // "mongodb://localhost:27017/users",
+    //"mongodb://localhost:27017/questions",
     {
       useNewUrlParser: true, //useFindAndModify: false,
       useUnifiedTopology: true,

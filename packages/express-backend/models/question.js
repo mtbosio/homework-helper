@@ -17,12 +17,7 @@ const QuestionSchema = new mongoose.Schema(
       },
     },
     date: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    time: {
-      type: String,
+      type: Date,
       required: true,
       trim: true,
     },
@@ -38,11 +33,6 @@ const QuestionSchema = new mongoose.Schema(
     },
     votes: {
       type: Number,
-      required: true,
-      trim: true,
-    },
-    comments: {
-      type: [String],
       required: true,
       trim: true,
     },

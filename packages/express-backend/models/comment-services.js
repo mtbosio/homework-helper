@@ -1,14 +1,9 @@
-import mongoose, { ObjectID, push} from "mongoose";
+import mongoose from "mongoose";
 import commentModel from "./comment.js";
 import dotenv from "dotenv";
 import { findQuestionById } from "./question-services.js";
 
 dotenv.config();
-console.log("MONGO_USER=", process.env.MONGO_USER);
-console.log("MONGO_PWD=", process.env.MONGO_PWD);
-console.log("MONGO_DB=", process.env.MONGO_DB);
-console.log("MONGO_CLUSTER=", process.env.MONGO_CLUSTER);
-
 mongoose.set("debug", true);
 
 mongoose
@@ -22,7 +17,7 @@ mongoose
       "/" +
       process.env.MONGO_DB +
       "?retryWrites=true&w=majority",
-    // "mongodb://localhost:27017/users",
+    //"mongodb://localhost:27017/questions",
     {
       useNewUrlParser: true, //useFindAndModify: false,
       useUnifiedTopology: true,
@@ -34,8 +29,8 @@ function getComments(questionID, author) {
   let promise;
   if (!questionID && author) {
     promise = findCommentByAuthor(author);
-  }else if (questionID && !author) {
-    promise = findCommentByQuestionID(questionID)
+  } else if (questionID && !author) {
+    promise = findCommentByQuestionID(questionID);
   } else {
     promise = commentModel.find();
   }
@@ -47,8 +42,8 @@ function findCommentById(id) {
 }
 
 function findCommentByQuestionID(id) {
-    return commentModel.find({ questionID: id });
-  }
+  return commentModel.find({ questionID: id });
+}
 
 function findCommentByAuthor(author) {
   return commentModel.find({ author: author });
@@ -57,10 +52,9 @@ function findCommentByAuthor(author) {
 function addComment(questionID, comment) {
   const commentToAdd = new commentModel(comment);
   commentToAdd.questionID = questionID;
-  findQuestionById(questionID)
-  .then((question) => {
-    ((question.comments).push(commentToAdd._id))
-  })
+  findQuestionById(questionID).then((question) => {
+    question.comments.push(commentToAdd._id);
+  });
   const promise = commentToAdd.save();
   return promise;
 }

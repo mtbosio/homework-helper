@@ -13,6 +13,11 @@ function fetchQuestions() {
   return promise;
 }
 
+function fetchComments(questionID) {
+  const promise = fetch(`${url}/questions/${questionID}/comments`);
+  return promise;
+}
+
 function getQuestion(id) {
   const promise = fetch(`${url}/questions/${id}`);
   return promise;
@@ -28,4 +33,4 @@ function postQuestion(question) {
   return promise;
 }
 
-export { fetchQuestions, getQuestion, postQuestion };
+export { fetchComments, fetchQuestions, getQuestion, postQuestion };

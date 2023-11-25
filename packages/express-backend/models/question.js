@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { ObjectID, Object } from "mongoose";
 
 const QuestionSchema = new mongoose.Schema(
   {
@@ -34,11 +33,6 @@ const QuestionSchema = new mongoose.Schema(
     },
     votes: {
       type: Number,
-      required: true,
-      trim: true,
-    },
-    comments: {
-      type: [Object],
       required: true,
       trim: true,
     },

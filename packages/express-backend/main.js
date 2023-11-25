@@ -7,9 +7,9 @@ import {
   addQuestion,
   findQuestionById,
 } from "./models/question-services.js";
-
+import { getComments, addComment } from "./models/comment-services.js";
 const app = express();
-const port = 5000;
+const port = 8000;
 
 const corsOptions = {
   origin: [
@@ -47,27 +47,26 @@ app.get("/questions/:id", cors(), (req, res) => {
 
 // Get all of the comments of a question
 app.get("/questions/:id/comments", cors(), (req, res) => {
-    const id = req.params["id"];
-    getComments(id)
-    .then((response) => {
-      console.log(response);
-      if (response === null) {
-        res.status(404).send("Resource not found.");
-      } else {
-        res.send(response);
-      }
-    });
+  const id = req.params["id"];
+  getComments(id).then((response) => {
+    console.log(response);
+    if (response === null) {
+      res.status(404).send("Resource not found.");
+    } else {
+      res.send(response);
+    }
   });
+});
 
 // Add a new comment on a question
 app.post("/questions/:id/comments", cors(), (req, res) => {
-    const id = req.params["id"];
-    addComment(id, req.body)
+  const id = req.params["id"];
+  addComment(id, req.body)
     .then((response) => res.status(201).send(response))
     .catch(() => {
-        console.log(res.status(400).send("Invalid Formatting"));
+      console.log(res.status(400).send("Invalid Formatting"));
     });
-  });
+});
 
 // Get question by subject, title, author, or if none specified returns all questions
 app.get("/questions", cors(), (req, res) => {

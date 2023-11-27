@@ -28,9 +28,8 @@ export const SearchBar = ({ setResults }) => {
         fetchData(value);
     }
 
-    return  
-    <div className="input-wrapper">
-        <input placeholder="Search" value={input} onChange={(e) => setInput(e.target.value)}/>
+    return  <div className="input-wrapper">
+        <input placeholder="Search" value={input} onChange={(e) => handleChange(e.target.value)}/>
     </div>
     
 }

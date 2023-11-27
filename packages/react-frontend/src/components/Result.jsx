@@ -2,15 +2,10 @@ import React from 'react'
 
 export const Result = ((result) => {
     return (
-        <div className="search-result">
-        <Link
-        to={`/post/${result.id}`}
-        style={{
-          borderBottom: "1px solid #E5E7EB",
-        }}
-        >
+        <div className="search-result" onClick={(e) => alert(`You selected ${result}!`)}>
+        
         {result.title}
-        </Link>
+   
         </div>
     );
 })

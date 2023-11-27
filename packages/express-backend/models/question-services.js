@@ -12,25 +12,6 @@ console.log("MONGO_CLUSTER=", process.env.MONGO_CLUSTER)
 mongoose.set("debug", true);
 
 mongoose
-<<<<<<< HEAD
-  .connect(
-    "mongodb+srv://" +
-      process.env.MONGO_USER +
-      ":" +
-      process.env.MONGO_PWD +
-      "@" +
-      process.env.MONGO_CLUSTER +
-      "/" +
-      process.env.MONGO_DB +
-      "?retryWrites=true&w=majority",
-    //"mongodb://localhost:27017/questions",
-    {
-      useNewUrlParser: true, //useFindAndModify: false,
-      useUnifiedTopology: true,
-    },
-  )
-  .catch((error) => console.log(error));
-=======
 .connect(
   "mongodb+srv://" +
     process.env.MONGO_USER +
@@ -48,7 +29,6 @@ mongoose
   }
 )
 .catch((error) => console.log(error));
->>>>>>> 5b95859 (worked on comment schema and endpoints)
 
 function getQuestions(subject, title, author) {
   let promise;

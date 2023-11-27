@@ -37,14 +37,11 @@ const QuestionSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-<<<<<<< HEAD
-=======
     comments: {
       type: [Object],
       required: true,
       trim: true,
     },
->>>>>>> 5b95859 (worked on comment schema and endpoints)
   },
   { collection: "questions_list" },
 );

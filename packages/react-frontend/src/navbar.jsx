@@ -1,7 +1,11 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import { SearchBar } from "./components/SearchBar"
+import { useState } from "react";
+import { SearchResults } from "./components/SearchResults";
 
-const Navbar = () => {
+function Navbar() {
+  const [results, setResults] = useState([]);
   return (
     <nav>
       <div class="table">
@@ -13,7 +17,10 @@ const Navbar = () => {
               </a>
             </div>
             <div class="d2">
-              <input type="text" placeholder="Search"></input>
+              <div className="search">
+                <SearchBar setResults={setResults}/>
+                {results && results.length > 0 && <SearchResults results={results}/>}
+              </div>   
             </div>
             <div class="d3">
               <Link to="/new">

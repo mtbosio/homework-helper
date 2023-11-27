@@ -1,8 +1,6 @@
 import React from "react";
-import "./Blog.css";
-import { Link } from "react-router-dom";
 
-function Blog(props) {
+function Comment(props) {
   return (
     <div
       style={{
@@ -15,8 +13,7 @@ function Blog(props) {
       }}
     >
       {/* Title */}
-      <Link
-        to={`/post/${props.question._id}`}
+      <p
         style={{
           borderBottom: "1px solid #E5E7EB",
         }}
@@ -26,9 +23,9 @@ function Blog(props) {
             margin: "0px 10px",
           }}
         >
-          {props.question.title}
+          {props.comment.author}
         </h3>
-      </Link>
+      </p>
 
       {/* Question Body */}
       <div
@@ -41,7 +38,7 @@ function Blog(props) {
             margin: "7px 10px",
           }}
         >
-          {props.question.body}
+          {props.comment.body}
         </p>
       </div>
 
@@ -52,23 +49,21 @@ function Blog(props) {
             margin: "3px 10px",
           }}
         >
-          Subject: {props.question.subject} | Author: {props.question.author} |
-          Votes: {props.question.votes} | Comments:{" "}
-          {props.question.comments.length}
+          Date: {props.comment.date}
         </p>
       </div>
     </div>
   );
 }
 
-function Blogs(props) {
+function Comments(props) {
   return (
     <div style={{ display: "block" }}>
-      {props.questionsData.map((question) => (
-        <Blog question={question} />
+      {props.commentsData.map((comment) => (
+        <Comment comment={comment} />
       ))}
     </div>
   );
 }
 
-export default Blogs;
+export default Comments;

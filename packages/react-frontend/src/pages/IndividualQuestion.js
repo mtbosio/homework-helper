@@ -1,8 +1,23 @@
-import React from "react";
-import "./Blog.css";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { getQuestion } from "../apis";
+import React, { useState, useEffect } from "react";
+import CommentCatalog from "./CommentCatalog";
 
-function Blog(props) {
+export default function IndividualQuestion(props) {
+  const params = useParams();
+  const [question, setQuestion] = useState({
+    subject: "",
+    title: "",
+    author: "",
+    body: "",
+  });
+
+  useEffect(() => {
+    getQuestion(params.id)
+      .then((response) => response.json())
+      .then((question) => setQuestion(question));
+  }, [params]);
+
   return (
     <div
       style={{
@@ -14,9 +29,7 @@ function Blog(props) {
         padding: "0px",
       }}
     >
-      {/* Title */}
-      <Link
-        to={`/post/${props.question._id}`}
+      <div
         style={{
           borderBottom: "1px solid #E5E7EB",
         }}
@@ -26,9 +39,9 @@ function Blog(props) {
             margin: "0px 10px",
           }}
         >
-          {props.question.title}
+          {question.title}
         </h3>
-      </Link>
+      </div>
 
       {/* Question Body */}
       <div
@@ -41,7 +54,7 @@ function Blog(props) {
             margin: "7px 10px",
           }}
         >
-          {props.question.body}
+          {question.body}
         </p>
       </div>
 
@@ -52,23 +65,11 @@ function Blog(props) {
             margin: "3px 10px",
           }}
         >
-          Subject: {props.question.subject} | Author: {props.question.author} |
-          Votes: {props.question.votes} | Comments:{" "}
-          {props.question.comments.length}
+          Subject: {question.subject} | Author: {question.author} | Votes:{" "}
+          {question.votes} | Comments: 0
         </p>
       </div>
+      <CommentCatalog questionID={params.id} />
     </div>
   );
 }
-
-function Blogs(props) {
-  return (
-    <div style={{ display: "block" }}>
-      {props.questionsData.map((question) => (
-        <Blog question={question} />
-      ))}
-    </div>
-  );
-}
-
-export default Blogs;

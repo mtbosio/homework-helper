@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../navbar";
 import "./NewQuestion.css";
 
-function NewQuestion() {
+function NewQuestion(props) {
   const navigate = useNavigate();
   const [question, setQuestion] = useState({
     subject: "",
@@ -37,7 +37,7 @@ function NewQuestion() {
 
   return (
     <>
-      <Navbar navbar>navbar</Navbar>
+      <Navbar navbar onLogin={props.onLogin} onLogout={props.onLogout} name={props.name}>navbar</Navbar>
       <div classname="postform">
         <form onSubmit={handleSubmit}>
           <label>

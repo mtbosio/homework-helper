@@ -2,18 +2,26 @@ import express from "express";
 import dotenv from "dotenv";
 import session from "express-session";
 import { OAuth2Client } from "google-auth-library";
-
 import {
   getQuestions,
   addQuestion,
   findQuestionById,
 } from "./models/question-services.js";
+import { getComments, addComment } from "./models/comment-services.js";
 
 dotenv.config();
 
 const authClient = new OAuth2Client();
 const app = express();
 const port = 8000;
+
+function verifySignedIn(req, res, next) {
+  if (req.session.name) {
+    next();
+  } else {
+    res.status(401).end();
+  }
+}
 
 app.set("trust proxy", 1);
 app.use(
@@ -46,6 +54,29 @@ app.get("/questions/:id", (req, res) => {
   });
 });
 
+// Get all of the comments of a question
+app.get("/questions/:id/comments", (req, res) => {
+  const id = req.params["id"];
+  getComments(id).then((response) => {
+    console.log(response);
+    if (response === null) {
+      res.status(404).send("Resource not found.");
+    } else {
+      res.send(response);
+    }
+  });
+});
+
+// Add a new comment on a question
+app.post("/questions/:id/comments", (req, res) => {
+  const id = req.params["id"];
+  addComment(id, req.body)
+    .then((response) => res.status(201).send(response))
+    .catch(() => {
+      console.log(res.status(400).send("Invalid Formatting"));
+    });
+});
+
 // Get question by subject, title, author, or if none specified returns all questions
 app.get("/questions", (req, res) => {
   const subject = req.query.subject;
@@ -53,12 +84,21 @@ app.get("/questions", (req, res) => {
   const author = req.query.author;
 
   getQuestions(subject, title, author).then((response) => {
+    /*res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, PATCH, DELETE",
+    );
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Authorization",
+    );*/
     res.status(200).send(response);
   });
 });
 
 // Post new question
-app.post("/questions", (req, res) => {
+app.post("/questions",verifySignedIn, (req, res) => {
   addQuestion(req.body)
     .then((response) => res.status(201).send(response))
     .catch(() => {

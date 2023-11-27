@@ -3,7 +3,7 @@ import Blogs from "../Blogs";
 import { fetchQuestions } from "../apis";
 import Navbar from "../navbar";
 
-function QuestionCatalog() {
+function QuestionCatalog(props) {
   const [questions, setQuestions] = useState([]);
   useEffect(() => {
     fetchQuestions()
@@ -16,7 +16,7 @@ function QuestionCatalog() {
 
   return (
     <div className="Frontpage">
-      <Navbar navbar>navbar</Navbar>
+      <Navbar navbar onLogin={props.onLogin} onLogout={props.onLogout} name={props.name}>navbar</Navbar>
       <h1>Posts</h1>
       <Blogs questionsData={questions} />
     </div>

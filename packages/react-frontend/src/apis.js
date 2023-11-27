@@ -14,10 +14,14 @@ function fetchQuestions() {
   return promise;
 }
 
+function fetchComments(questionID) {
+  const promise = fetch(`${url}/questions/${questionID}/comments`);
+  return promise;
+}
+
 function getQuestion(id) {
   const promise = fetch(`${url}/questions/${id}`, {
-    credentials: "same-origin",
-  });
+    credentials: "same-origin"});
   return promise;
 }
 
@@ -47,4 +51,4 @@ function logout() {
   });
 }
 
-export { fetchQuestions, getQuestion, postQuestion, login, logout };
+export { fetchQuestions, fetchComments, getQuestion, postQuestion, login, logout };

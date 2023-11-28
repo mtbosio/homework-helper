@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { postQuestion } from "../apis";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../navbar";
 import "./NewQuestion.css";
 
 function NewQuestion() {
@@ -37,7 +36,6 @@ function NewQuestion() {
 
   return (
     <>
-      <Navbar navbar>navbar</Navbar>
       <div classname="postform">
         <form onSubmit={handleSubmit}>
           <label>

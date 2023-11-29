@@ -15,6 +15,7 @@ function NewComment(props) {
   }
 
   function handleSubmit(event) {
+    event.preventDefault();
     postComment(
       {
         body: comment.body,
@@ -22,9 +23,7 @@ function NewComment(props) {
       },
       props.questionID,
     )
-      .then((res) => {
-        console.log(res);
-      })
+      .then((res) => window.location.reload())
       .catch((exception) => console.log(exception));
   }
 

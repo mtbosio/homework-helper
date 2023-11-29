@@ -57,7 +57,6 @@ function findQuestionBySubject(subject) {
 }
 
 function findQuestionByTitle(title) {
-  console.log(title);
   return questionModel.find({ title: {$regex: title, $options: 'i'} });
 }
 

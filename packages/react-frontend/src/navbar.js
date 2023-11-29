@@ -1,27 +1,26 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { SearchBar } from "./SearchBar"
-import { useState } from "react";
 
 function Navbar({ setQuestions }) {
   return (
     <nav>
-      <div className="table">
-        <div className="tr">
-          <div className="topnav">
-            <div className="d1">
-              <a className="active" href="/">
+      <div class="table">
+        <div class="tr">
+          <div class="topnav">
+            <div class="d1">
+              <a class="active" href="/">
                 Homework Help
               </a>
             </div>
-            <div className="d2">
-              <div className="search">
+            <div class="d2">
+              <div class="search">
                 <SearchBar setQuestions={setQuestions}/>
               </div>   
             </div>
-            <div className="d3">
+            <div class="d3">
               <Link to="/new">
-                <button className="newpost">New Question</button>
+                <button class="newpost">New Question</button>
               </Link>
             </div>
           </div>

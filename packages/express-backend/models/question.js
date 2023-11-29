@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { ObjectID, Object } from "mongoose";
 
 const QuestionSchema = new mongoose.Schema(
   {

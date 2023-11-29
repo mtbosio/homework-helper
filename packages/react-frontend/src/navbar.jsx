@@ -1,11 +1,9 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
-import { SearchBar } from "./components/SearchBar"
+import { SearchBar } from "./SearchBar"
 import { useState } from "react";
-import { SearchResults } from "./components/SearchResults";
 
-function Navbar() {
-  const [results, setResults] = useState([]);
+function Navbar({ setQuestions }) {
   return (
     <nav>
       <div className="table">
@@ -18,8 +16,7 @@ function Navbar() {
             </div>
             <div className="d2">
               <div className="search">
-                <SearchBar setResults={setResults}/>
-                {results && results.length > 0 && <SearchResults results={results}/>}
+                <SearchBar setQuestions={setQuestions}/>
               </div>   
             </div>
             <div className="d3">

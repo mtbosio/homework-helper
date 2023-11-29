@@ -22,7 +22,7 @@ mongoose
     "/" +
     process.env.MONGO_DB +
     "?retryWrites=true&w=majority",
-  // "mongodb://localhost:27017/users",
+  // "mongodb://localhost:27017/questions",
   {
     useNewUrlParser: true, //useFindAndModify: false,
     useUnifiedTopology: true,
@@ -57,7 +57,8 @@ function findQuestionBySubject(subject) {
 }
 
 function findQuestionByTitle(title) {
-  return questionModel.find({ title: title });
+  console.log(title);
+  return questionModel.find({ title: {$regex: title, $options: 'i'} });
 }
 
 function addQuestion(userQuestion) {

@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 import commentModel from "./comment.js";
 import dotenv from "dotenv";
-import { findQuestionById } from "./question-services.js";
-
+import sanitizeHtml from "sanitize-html";
 dotenv.config();
 mongoose.set("debug", true);
 
@@ -50,11 +49,14 @@ function findCommentByAuthor(author) {
 }
 
 function addComment(questionID, comment) {
-  const commentToAdd = new commentModel(comment);
-  commentToAdd.questionID = questionID;
-  findQuestionById(questionID).then((question) => {
-    question.comments.push(commentToAdd._id);
-  });
+  const date = new Date();
+  const newComment = {
+    questionID: sanitizeHtml(questionID),
+    author: sanitizeHtml(comment.author),
+    body: sanitizeHtml(comment.body),
+    date: date.toDateString(),
+  };
+  const commentToAdd = new commentModel(newComment);
   const promise = commentToAdd.save();
   return promise;
 }

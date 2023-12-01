@@ -1,6 +1,8 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
+import { SearchBar } from "./SearchBar"
+
 
 const UserInfo = (props) => {
 
@@ -33,12 +35,14 @@ const Navbar = (props) => {
                 Homework Help
               </Link>
             </div>
-            <div class="d2">
-              <input type="text" placeholder="Search"></input>
+            <div className="d2">
+              <div className="search">
+                <SearchBar setQuestions={props.setQuestions}/>
+              </div>   
             </div>
-            <div class="d3">
+            <div className="d3">
               <Link to="/new">
-                <button class="newpost">New Question</button>
+                <button className="newpost">New Question</button>
               </Link>
               <UserInfo onLogin={props.onLogin} onLogout={props.onLogout} name={props.name}/>
             </div>

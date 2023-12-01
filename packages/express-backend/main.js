@@ -43,7 +43,7 @@ app.use(express.json());
 // API endpoint definitions go here
 
 // Get a single question by ID
-app.get("/questions/:id", (req, res) => {
+app.get("/api/questions/:id", (req, res) => {
   const id = req.params["id"];
   findQuestionById(id).then((response) => {
     if (response === null) {
@@ -55,7 +55,7 @@ app.get("/questions/:id", (req, res) => {
 });
 
 // Get all of the comments of a question
-app.get("/questions/:id/comments", (req, res) => {
+app.get("/api/questions/:id/comments", (req, res) => {
   const id = req.params["id"];
   getComments(id).then((response) => {
     console.log(response);
@@ -68,7 +68,7 @@ app.get("/questions/:id/comments", (req, res) => {
 });
 
 // Add a new comment on a question
-app.post("/questions/:id/comments", (req, res) => {
+app.post("/api/questions/:id/comments", (req, res) => {
   const id = req.params["id"];
   addComment(id, req.body)
     .then((response) => res.status(201).send(response))
@@ -78,27 +78,18 @@ app.post("/questions/:id/comments", (req, res) => {
 });
 
 // Get question by subject, title, author, or if none specified returns all questions
-app.get("/questions", (req, res) => {
+app.get("/api/questions", (req, res) => {
   const subject = req.query.subject;
   const title = req.query.title;
   const author = req.query.author;
 
   getQuestions(subject, title, author).then((response) => {
-    /*res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, PUT, PATCH, DELETE",
-    );
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization",
-    );*/
     res.status(200).send(response);
   });
 });
 
 // Post new question
-app.post("/questions",verifySignedIn, (req, res) => {
+app.post("/api/questions", verifySignedIn, (req, res) => {
   addQuestion(req.body)
     .then((response) => res.status(201).send(response))
     .catch(() => {
@@ -106,7 +97,7 @@ app.post("/questions",verifySignedIn, (req, res) => {
     });
 });
 
-app.post("/login", (req, res) => {
+app.post("/api/login", (req, res) => {
   const credentialString = req.body.credential;
   let name;
   let userId;
@@ -137,7 +128,7 @@ app.post("/login", (req, res) => {
     });
 });
 
-app.get("/logout", (req, res) => {
+app.get("/api/logout", (req, res) => {
   req.session.regenerate((err) => {
     if (err) {
       console.log(err);

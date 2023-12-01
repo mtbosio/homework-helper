@@ -55,20 +55,19 @@ app.get("/questions/:id/comments", (req, res) => {
 
 // Add a new comment on a question
 app.post("/questions/:id/comments", (req, res) => {
-  validateAuth(req.headers.authorization)
-    .then((userInfo) => {
-      if (userInfo == undefined) {
-        res.status(401).send("Login first.");
-        return;
-      }
+  validateAuth(req.headers.authorization).then((userInfo) => {
+    if (userInfo == undefined) {
+      res.status(401).send("Login first.");
+      return;
+    }
 
-      const id = req.params["id"];
-      addComment(id, req.body, userInfo.name)
-        .then((response) => res.status(201).send(response))
-        .catch(() => {
-          console.log(res.status(400).send("Invalid Formatting"));
-        });
-    });
+    const id = req.params["id"];
+    addComment(id, req.body, userInfo.name)
+      .then((response) => res.status(201).send(response))
+      .catch(() => {
+        console.log(res.status(400).send("Invalid Formatting"));
+      });
+  });
 });
 
 // Get question by subject, title, author, or if none specified returns all questions
@@ -84,19 +83,18 @@ app.get("/questions", (req, res) => {
 
 // Post new question
 app.post("/questions", (req, res) => {
-  validateAuth(req.headers.authorization)
-    .then((userInfo) => {
-      if (userInfo == undefined) {
-        res.status(401).send("Login first.");
-        return;
-      }
+  validateAuth(req.headers.authorization).then((userInfo) => {
+    if (userInfo == undefined) {
+      res.status(401).send("Login first.");
+      return;
+    }
 
-      addQuestion(req.body, userInfo.name)
-        .then((response) => res.status(201).send(response))
-        .catch(() => {
-          console.log(res.status(400).send("Invalid Formatting"));
-        });
-    });
+    addQuestion(req.body, userInfo.name)
+      .then((response) => res.status(201).send(response))
+      .catch(() => {
+        console.log(res.status(400).send("Invalid Formatting"));
+      });
+  });
 });
 
 app.post("/verifyCredentials", (req, res) => {

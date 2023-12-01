@@ -22,11 +22,14 @@ function NewQuestion(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    postQuestion({
-      subject: question.subject,
-      title: question.title,
-      body: question.body,
-    }, props.userInfo.credential)
+    postQuestion(
+      {
+        subject: question.subject,
+        title: question.title,
+        body: question.body,
+      },
+      props.userInfo.credential,
+    )
       .then((res) => {
         console.log(res);
         navigate("/");

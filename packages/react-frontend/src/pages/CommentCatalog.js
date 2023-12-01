@@ -17,7 +17,12 @@ function CommentCatalog(props) {
   return (
     <div className="Frontpage">
       <Comments commentsData={comments} />
-      <NewComment userInfo={props.userInfo} questionId={props.questionId} comments={comments} setComments={setComments}/>
+      <NewComment
+        userInfo={props.userInfo}
+        questionId={props.questionId}
+        comments={comments}
+        setComments={setComments}
+      />
     </div>
   );
 }

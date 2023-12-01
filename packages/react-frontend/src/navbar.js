@@ -27,10 +27,12 @@ const Navbar = (props) => {
   function onLogin(response) {
     verifyCredentials(response.credential)
       .then((res) => res.json())
-      .then((res) => props.setUserInfo({
-        name: res.name,
-        credential: response.credential
-      }));
+      .then((res) =>
+        props.setUserInfo({
+          name: res.name,
+          credential: response.credential,
+        }),
+      );
   }
 
   function onLogout(response) {

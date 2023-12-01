@@ -17,9 +17,9 @@ function NewComment(props) {
   function handleSubmit(event) {
     event.preventDefault();
     postComment(
-      {body: comment.body},
+      { body: comment.body },
       props.questionId,
-      props.userInfo.credential
+      props.userInfo.credential,
     )
       .then((res) => res.json())
       .then((res) => props.setComments([...props.comments, res]))

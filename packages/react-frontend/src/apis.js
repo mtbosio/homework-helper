@@ -32,8 +32,11 @@ function getQuestion(id) {
 function postQuestion(question, credential) {
   const promise = fetch(`${url}/questions`, {
     method: "POST",
-    headers: { "Content-type": "application/json", "Authorization": `Bearer ${credential}` },
-    body: JSON.stringify(question)
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${credential}`,
+    },
+    body: JSON.stringify(question),
   });
   return promise;
 }
@@ -41,8 +44,11 @@ function postQuestion(question, credential) {
 function postComment(comment, questionID, credential) {
   const promise = fetch(`${url}/questions/${questionID}/comments`, {
     method: "POST",
-    headers: { "Content-type": "application/json", "Authorization": `Bearer ${credential}` },
-    body: JSON.stringify(comment)
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${credential}`,
+    },
+    body: JSON.stringify(comment),
   });
   return promise;
 }

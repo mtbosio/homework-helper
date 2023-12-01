@@ -16,7 +16,7 @@ function QuestionCatalog() {
 
   return (
     <div className="Frontpage">
-      <Navbar navbar>navbar</Navbar>
+      <Navbar navbar setQuestions={ setQuestions }>navbar</Navbar>
       <h1>Posts</h1>
       <Blogs questionsData={questions} />
     </div>

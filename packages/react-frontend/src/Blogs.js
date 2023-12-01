@@ -65,7 +65,7 @@ function Blogs(props) {
   return (
     <div style={{ display: "block" }}>
       {props.questionsData.map((question) => (
-        <Blog question={question} />
+        <Blog question={question} key={question._id} />
       ))}
     </div>
   );

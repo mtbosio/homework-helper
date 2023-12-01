@@ -36,6 +36,11 @@ const QuestionSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    comments: {
+      type: [Object],
+      required: true,
+      trim: true,
+    },
   },
   { collection: "questions_list" },
 );

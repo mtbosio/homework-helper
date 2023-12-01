@@ -1,0 +1,46 @@
+/* Apply to the form elements */
+form {
+  max-width: 600px;
+  margin: 20px auto; /* Center the form with automatic margins on the sides */
+  padding: 20px;
+  background: white; /* A light grey background */
+  border-radius: 8px; /* Rounded corners for the form */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
+}
+
+label {
+  display: block; /* Each label/input pair will be on its own line */
+  margin-bottom: 15px; /* Add some space between the label/input pairs */
+  color: #333; /* Dark grey color for the text for better readability */
+}
+
+input[type="text"] {
+  width: calc(100% - 20px); /* Full width minus padding */
+  padding: 10px; /* Padding inside the inputs for aesthetics */
+  margin-top: 5px; /* Space between the label and the input field */
+  border: 1px solid #ccc; /* A subtle border around the inputs */
+  border-radius: 4px; /* Slightly rounded corners for the inputs */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+input[type="text"]:focus {
+  border-color: #007bff; /* Highlight color when an input is focused */
+  outline: none; /* Remove the default focus outline */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* A blue glow around the focused input */
+}
+
+button[type="submit"] {
+  padding: 10px 15px; /* Padding inside the button */
+  background-color: #007bff; /* A solid, appealing blue */
+  color: white; /* White text on the blue button */
+  border: none; /* No border for the button */
+  border-radius: 4px; /* Slightly rounded corners for the button */
+  cursor: pointer; /* A pointer cursor to indicate it's clickable */
+  font-size: 16px; /* Slightly larger font for the button */
+  font-weight: bold; /* Bold text for the button */
+  transition: background-color 0.3s ease; /* A transition for the button color */
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* A darker blue on hover for the button */
+}

@@ -38,4 +38,21 @@ function postQuestion(question) {
   return promise;
 }
 
-export { fetchComments, fetchQuestions, fetchQuestionsByTitle, getQuestion, postQuestion };
+
+function postComment(comment, questionID) {
+  const promise = fetch(`${url}/questions/${questionID}/comments`, {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(comment),
+  });
+  return promise;
+}
+
+export {
+  fetchComments,
+  fetchQuestions,
+  fetchQuestionsByTitle,
+  getQuestion,
+  postQuestion,
+  postComment,
+};

@@ -44,7 +44,7 @@ function Page() {
 }
 
 root.render(
-  <GoogleOAuthProvider clientId="784911340257-tuiheqn4eegk80kffik7ihsgv4ajlb90.apps.googleusercontent.com">
+  <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
     <React.StrictMode>
       <Page />
     </React.StrictMode>

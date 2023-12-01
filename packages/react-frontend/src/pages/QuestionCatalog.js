@@ -16,7 +16,14 @@ function QuestionCatalog(props) {
 
   return (
     <div className="Frontpage">
-      <Navbar navbar setQuestions={ setQuestions } onLogin={props.onLogin} onLogout={props.onLogout} name={props.name}>navbar</Navbar>
+      <Navbar
+        navbar
+        setQuestions={setQuestions}
+        userInfo={props.userInfo}
+        setUserInfo={props.setUserInfo}
+      >
+        navbar
+      </Navbar>
       <h1>Posts</h1>
       <Blogs questionsData={questions} />
     </div>

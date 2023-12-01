@@ -1,11 +1,10 @@
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
-import { SearchBar } from "./SearchBar"
-
+import { SearchBar } from "./SearchBar";
+import { verifyCredentials } from "./apis";
 
 const UserInfo = (props) => {
-
   const onLoginError = (response) => {
     console.log(response);
   };
@@ -25,6 +24,22 @@ const UserInfo = (props) => {
 };
 
 const Navbar = (props) => {
+  function onLogin(response) {
+    verifyCredentials(response.credential)
+      .then((res) => res.json())
+      .then((res) => props.setUserInfo({
+        name: res.name,
+        credential: response.credential
+      }));
+  }
+
+  function onLogout(response) {
+    props.setUserInfo({
+      name: undefined,
+      credential: undefined,
+    });
+  }
+
   return (
     <nav>
       <div class="table">
@@ -37,14 +52,20 @@ const Navbar = (props) => {
             </div>
             <div className="d2">
               <div className="search">
-                <SearchBar setQuestions={props.setQuestions}/>
-              </div>   
+                <SearchBar setQuestions={props.setQuestions} />
+              </div>
             </div>
             <div className="d3">
-              <Link to="/new">
-                <button className="newpost">New Question</button>
-              </Link>
-              <UserInfo onLogin={props.onLogin} onLogout={props.onLogout} name={props.name}/>
+              {props.userInfo.name !== undefined && (
+                <Link to="/new">
+                  <button className="newpost">New Question</button>
+                </Link>
+              )}
+              <UserInfo
+                onLogin={onLogin}
+                onLogout={onLogout}
+                name={props.userInfo.name}
+              />
             </div>
           </div>
         </div>

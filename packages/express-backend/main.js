@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import session from "express-session";
+import cors from "cors";
 import { OAuth2Client } from "google-auth-library";
 import {
   getQuestions,
@@ -8,6 +8,7 @@ import {
   findQuestionById,
 } from "./models/question-services.js";
 import { getComments, addComment } from "./models/comment-services.js";
+import validateAuth from "./auth.js";
 
 dotenv.config();
 
@@ -15,35 +16,20 @@ const authClient = new OAuth2Client();
 const app = express();
 const port = 8000;
 
-function verifySignedIn(req, res, next) {
-  if (req.session.name) {
-    next();
-  } else {
-    res.status(401).end();
-  }
-}
-
-app.set("trust proxy", 1);
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
-    cookie: {
-      secure: false,
-      httpOnly: true,
-      sameSite: "strict",
-      maxAge: 60 * 60 * 1000, // 1 hour session
-    },
-  }),
-);
+const corsOptions = {
+  origin: [
+    "https://lemon-sand-0ec997c1e.4.azurestaticapps.net/",
+    "http://localhost:3000",
+  ],
+};
 
 app.use(express.json());
+app.use(cors(corsOptions));
 
 // API endpoint definitions go here
 
 // Get a single question by ID
-app.get("/api/questions/:id", (req, res) => {
+app.get("/questions/:id", (req, res) => {
   const id = req.params["id"];
   findQuestionById(id).then((response) => {
     if (response === null) {
@@ -55,7 +41,7 @@ app.get("/api/questions/:id", (req, res) => {
 });
 
 // Get all of the comments of a question
-app.get("/api/questions/:id/comments", (req, res) => {
+app.get("/questions/:id/comments", (req, res) => {
   const id = req.params["id"];
   getComments(id).then((response) => {
     console.log(response);
@@ -68,17 +54,25 @@ app.get("/api/questions/:id/comments", (req, res) => {
 });
 
 // Add a new comment on a question
-app.post("/api/questions/:id/comments", (req, res) => {
-  const id = req.params["id"];
-  addComment(id, req.body)
-    .then((response) => res.status(201).send(response))
-    .catch(() => {
-      console.log(res.status(400).send("Invalid Formatting"));
+app.post("/questions/:id/comments", (req, res) => {
+  validateAuth(req.headers.authorization)
+    .then((userInfo) => {
+      if (userInfo == undefined) {
+        res.status(401).send("Login first.");
+        return;
+      }
+
+      const id = req.params["id"];
+      addComment(id, req.body, userInfo.name)
+        .then((response) => res.status(201).send(response))
+        .catch(() => {
+          console.log(res.status(400).send("Invalid Formatting"));
+        });
     });
 });
 
 // Get question by subject, title, author, or if none specified returns all questions
-app.get("/api/questions", (req, res) => {
+app.get("/questions", (req, res) => {
   const subject = req.query.subject;
   const title = req.query.title;
   const author = req.query.author;
@@ -89,18 +83,25 @@ app.get("/api/questions", (req, res) => {
 });
 
 // Post new question
-app.post("/api/questions", verifySignedIn, (req, res) => {
-  addQuestion(req.body)
-    .then((response) => res.status(201).send(response))
-    .catch(() => {
-      console.log(res.status(400).send("Invalid Formatting"));
+app.post("/questions", (req, res) => {
+  validateAuth(req.headers.authorization)
+    .then((userInfo) => {
+      if (userInfo == undefined) {
+        res.status(401).send("Login first.");
+        return;
+      }
+
+      addQuestion(req.body, userInfo.name)
+        .then((response) => res.status(201).send(response))
+        .catch(() => {
+          console.log(res.status(400).send("Invalid Formatting"));
+        });
     });
 });
 
-app.post("/api/login", (req, res) => {
+app.post("/verifyCredentials", (req, res) => {
   const credentialString = req.body.credential;
   let name;
-  let userId;
 
   authClient
     .verifyIdToken({
@@ -108,35 +109,13 @@ app.post("/api/login", (req, res) => {
       audience: process.env.OAUTH_CLIENT_ID,
     })
     .then((ticket) => {
-      userId = ticket.getPayload()["sub"];
       name = ticket.getPayload()["name"];
-
-      req.session.regenerate((err) => {
-        if (err) {
-          console.log(err);
-          res.status(500).send("Internal error.");
-        }
-
-        req.session.name = name;
-        req.session.userId = userId;
-        res.status(200).send(JSON.stringify({ name: name }));
-      });
+      res.status(200).send(JSON.stringify({ name: name }));
     })
     .catch((err) => {
       console.log(err);
       res.status(403).send("Invalid Creds");
     });
-});
-
-app.get("/api/logout", (req, res) => {
-  req.session.regenerate((err) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("Internal Error");
-    }
-
-    res.status(200).send("Success");
-  });
 });
 
 // Start service

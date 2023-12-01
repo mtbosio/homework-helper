@@ -4,9 +4,9 @@ headers.append("Content-Type", "application/json");
 var url;
 
 if (process.env.REACT_APP_IS_LOCAL) {
-  url = "http://localhost:3000/api";
+  url = "http://localhost:8000";
 } else {
-  url = "https://lemon-sand-0ec997c1e.4.azurestaticapps.net/api";
+  url = "https://homework-helper.azurewebsites.net";
 }
 
 function fetchQuestions() {
@@ -25,44 +25,35 @@ function fetchComments(questionID) {
 }
 
 function getQuestion(id) {
-  const promise = fetch(`${url}/questions/${id}`, {
-    credentials: "same-origin"});
+  const promise = fetch(`${url}/questions/${id}`);
   return promise;
 }
 
-function postQuestion(question) {
+function postQuestion(question, credential) {
   const promise = fetch(`${url}/questions`, {
     method: "POST",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify(question),
-    credentials: "same-origin",
+    headers: { "Content-type": "application/json", "Authorization": `Bearer ${credential}` },
+    body: JSON.stringify(question)
   });
   return promise;
 }
 
-function postComment(comment, questionID) {
+function postComment(comment, questionID, credential) {
   const promise = fetch(`${url}/questions/${questionID}/comments`, {
     method: "POST",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify(comment),
+    headers: { "Content-type": "application/json", "Authorization": `Bearer ${credential}` },
+    body: JSON.stringify(comment)
   });
   return promise;
 }
 
-function login(credential) {
-  return fetch(`${url}/login`, {
+function verifyCredentials(credential) {
+  const promise = fetch(`${url}/verifyCredentials`, {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({ credential: credential }),
-    credentials: "same-origin",
   });
-}
-
-function logout() {
-  return fetch(`${url}/logout`, {
-    method: "GET",
-    credentials: "same-origin",
-  });
+  return promise;
 }
 
 export {
@@ -72,6 +63,5 @@ export {
   getQuestion,
   postQuestion,
   postComment,
-  login,
-  logout
+  verifyCredentials,
 };

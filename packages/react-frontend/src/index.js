@@ -8,43 +8,45 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import NewQuestion from "./pages/NewQuestion";
 import IndividualQuestion from "./pages/IndividualQuestion";
 import { useState } from "react";
-import { login, logout } from "./apis"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function Page() {
-  const [name, setName] = useState();
-
-  const onLogin = (response) => {
-    login(response.credential)
-      .then((res) => res.json())
-      .then((json) => {
-        setName(json.name);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const onLogout = () => {
-    logout()
-      .then(setName(undefined))
-      .catch((err) => console.log(err));
-  };
+  const [userInfo, setUserInfo] = useState({
+    name: undefined,
+    credential: undefined,
+  });
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<QuestionCatalog onLogin={onLogin} onLogout={onLogout} name={name}/>} />
-        <Route path="/new" element={<NewQuestion onLogin={onLogin} onLogout={onLogout} name={name}/>}/>
-        <Route path="/post/:id" element={<IndividualQuestion onLogin={onLogin} onLogout={onLogout} name={name}/>} />
+        <Route
+          path="/"
+          element={
+            <QuestionCatalog userInfo={userInfo} setUserInfo={setUserInfo} />
+          }
+        />
+        <Route
+          path="/new"
+          element={
+            <NewQuestion userInfo={userInfo} setUserInfo={setUserInfo} />
+          }
+        />
+        <Route
+          path="/post/:id"
+          element={
+            <IndividualQuestion userInfo={userInfo} setUserInfo={setUserInfo} />
+          }
+        />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
 root.render(
   <GoogleOAuthProvider clientId="784911340257-tuiheqn4eegk80kffik7ihsgv4ajlb90.apps.googleusercontent.com">
     <React.StrictMode>
-      <Page/>
+      <Page />
     </React.StrictMode>
   </GoogleOAuthProvider>,
 );

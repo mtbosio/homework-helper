@@ -8,8 +8,9 @@ if (process.env.REACT_APP_IS_LOCAL) {
 } else {
   url = "https://homework-helper.azurewebsites.net";
 }
+
 function fetchQuestions() {
-  const promise = fetch(`${url}/questions`);
+  const promise = fetch(`${url}/questions`, { credentials: "same-origin" });
   return promise;
 }
 
@@ -28,22 +29,35 @@ function getQuestion(id) {
   return promise;
 }
 
-function postQuestion(question) {
-  console.log(JSON.stringify(question));
+function postQuestion(question, credential) {
   const promise = fetch(`${url}/questions`, {
     method: "POST",
-    headers: { "Content-type": "application/json" },
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${credential}`,
+    },
     body: JSON.stringify(question),
   });
   return promise;
 }
 
-
-function postComment(comment, questionID) {
+function postComment(comment, questionID, credential) {
   const promise = fetch(`${url}/questions/${questionID}/comments`, {
     method: "POST",
-    headers: { "Content-type": "application/json" },
+    headers: {
+      "Content-type": "application/json",
+      Authorization: `Bearer ${credential}`,
+    },
     body: JSON.stringify(comment),
+  });
+  return promise;
+}
+
+function verifyCredentials(credential) {
+  const promise = fetch(`${url}/verifyCredentials`, {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify({ credential: credential }),
   });
   return promise;
 }
@@ -55,4 +69,5 @@ export {
   getQuestion,
   postQuestion,
   postComment,
+  verifyCredentials,
 };

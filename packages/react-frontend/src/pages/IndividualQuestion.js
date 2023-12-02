@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import { getQuestion } from "../apis";
 import React, { useState, useEffect } from "react";
 import CommentCatalog from "./CommentCatalog";
-import NewComment from "../NewComment";
 import Navbar from "../navbar";
-export default function IndividualQuestion() {
+
+export default function IndividualQuestion(props) {
   const params = useParams();
   const [question, setQuestion] = useState({
     subject: "",
@@ -21,7 +21,7 @@ export default function IndividualQuestion() {
 
   return (
     <>
-      <Navbar />
+      <Navbar userInfo={props.userInfo} setUserInfo={props.setUserInfo} />
       <div
         style={{
           margin: "20px auto",
@@ -72,8 +72,7 @@ export default function IndividualQuestion() {
             {question.votes} | Comments: 0
           </p>
         </div>
-        <CommentCatalog questionID={params.id} />
-        <NewComment questionID={params.id} />
+        <CommentCatalog userInfo={props.userInfo} questionId={params.id} />
       </div>
     </>
   );

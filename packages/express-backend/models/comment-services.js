@@ -48,11 +48,11 @@ function findCommentByAuthor(author) {
   return commentModel.find({ author: author });
 }
 
-function addComment(questionID, comment) {
+function addComment(questionID, comment, name) {
   const date = new Date();
   const newComment = {
     questionID: sanitizeHtml(questionID),
-    author: sanitizeHtml(comment.author),
+    author: sanitizeHtml(name),
     body: sanitizeHtml(comment.body),
     date: date.toDateString(),
   };

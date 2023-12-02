@@ -17,13 +17,15 @@ function NewComment(props) {
   function handleSubmit(event) {
     event.preventDefault();
     postComment(
-      {
-        body: comment.body,
-        author: "Matt", //just set to prefix name until it works with oauth
-      },
-      props.questionID,
+      { body: comment.body },
+      props.questionId,
+      props.userInfo.credential,
     )
-      .then((res) => window.location.reload())
+      .then((res) => res.json())
+      .then((res) => props.setComments([...props.comments, res]))
+      .then((res) => {
+        comment.body = "";
+      })
       .catch((exception) => console.log(exception));
   }
 

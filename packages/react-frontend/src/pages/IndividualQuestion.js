@@ -69,7 +69,7 @@ export default function IndividualQuestion(props) {
             }}
           >
             Subject: {question.subject} | Author: {question.author} | Votes:{" "}
-            {question.votes} | Comments: 0
+            {question.votes} | Comments: {question.comments}
           </p>
         </div>
         <CommentCatalog userInfo={props.userInfo} questionId={params.id} />

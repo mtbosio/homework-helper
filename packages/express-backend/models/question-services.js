@@ -70,7 +70,7 @@ function addQuestion(userQuestion, name) {
     date: date.toDateString(),
     time: date.toLocaleTimeString(),
     votes: 0,
-    comments: [],
+    comments: 0,
   };
   const questionToAdd = new questionModel(question);
   const promise = questionToAdd.save();

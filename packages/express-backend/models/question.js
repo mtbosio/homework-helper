@@ -37,7 +37,7 @@ const QuestionSchema = new mongoose.Schema(
       trim: true,
     },
     comments: {
-      type: [Object],
+      type: Number,
       required: true,
       trim: true,
     },

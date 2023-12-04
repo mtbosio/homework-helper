@@ -53,7 +53,7 @@ function Blog(props) {
           }}
         >
           Subject: {props.question.subject} | Author: {props.question.author} |
-          Votes: {props.question.votes} | Comments:{" "}
+          Votes: {props.question.votes} | Comments: {props.question.comments}
           {props.question.comments.length}
         </p>
       </div>

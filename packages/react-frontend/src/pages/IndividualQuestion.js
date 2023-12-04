@@ -3,6 +3,7 @@ import { getQuestion } from "../apis";
 import React, { useState, useEffect } from "react";
 import CommentCatalog from "./CommentCatalog";
 import Navbar from "../navbar";
+import NewComment from "../NewComment";
 
 export default function IndividualQuestion(props) {
   const params = useParams();
@@ -11,13 +12,17 @@ export default function IndividualQuestion(props) {
     title: "",
     author: "",
     body: "",
+    comments: 0,
+    votes: 0,
   });
+
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getQuestion(params.id)
       .then((response) => response.json())
       .then((question) => setQuestion(question));
-  }, [params]);
+  }, [params.id]);
 
   return (
     <>
@@ -69,10 +74,21 @@ export default function IndividualQuestion(props) {
             }}
           >
             Subject: {question.subject} | Author: {question.author} | Votes:{" "}
-            {question.votes} | Comments: {question.comments}
+            {question.votes} | Comments: {comments.length}
           </p>
         </div>
-        <CommentCatalog userInfo={props.userInfo} questionId={params.id} />
+        <CommentCatalog
+          userInfo={props.userInfo}
+          questionId={params.id}
+          comments={comments}
+          setComments={setComments}
+        />
+        <NewComment
+          userInfo={props.userInfo}
+          questionId={params.id}
+          comments={comments}
+          setComments={setComments}
+        />
       </div>
     </>
   );

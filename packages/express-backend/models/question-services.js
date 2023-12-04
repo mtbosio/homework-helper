@@ -77,6 +77,13 @@ function addQuestion(userQuestion, name) {
   return promise;
 }
 
+function changeCommentAmount(questionId, amount) {
+  //console.log(questionId);
+  questionModel
+    .updateOne({ _id: questionId }, { $inc: { comments: amount } })
+    .catch((err) => console.log(err));
+}
+
 export {
   addQuestion,
   getQuestions,
@@ -84,4 +91,5 @@ export {
   findQuestionByTitle,
   findQuestionBySubject,
   findQuestionByAuthor,
+  changeCommentAmount,
 };

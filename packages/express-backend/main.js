@@ -6,6 +6,7 @@ import {
   getQuestions,
   addQuestion,
   findQuestionById,
+  changeCommentAmount,
 } from "./models/question-services.js";
 import { getComments, addComment } from "./models/comment-services.js";
 import validateAuth from "./auth.js";
@@ -63,7 +64,10 @@ app.post("/questions/:id/comments", (req, res) => {
 
     const id = req.params["id"];
     addComment(id, req.body, userInfo.name)
-      .then((response) => res.status(201).send(response))
+      .then((response) => {
+        changeCommentAmount(id, 1);
+        res.status(201).send(response);
+      })
       .catch(() => {
         console.log(res.status(400).send("Invalid Formatting"));
       });

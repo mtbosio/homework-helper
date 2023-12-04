@@ -1,28 +1,23 @@
-import { useState, useEffect, React } from "react";
+import { useEffect, React } from "react";
 import Comments from "../Comments";
-import NewComment from "../NewComment";
 import { fetchComments } from "../apis";
 
 function CommentCatalog(props) {
-  const [comments, setComments] = useState([]);
+  let setComments = props.setComments;
+  let questionId = props.questionId;
+
   useEffect(() => {
-    fetchComments(props.questionId)
+    fetchComments(questionId)
       .then((res) => res.json())
       .then((json) => setComments(json))
       .catch((error) => {
         console.log(error);
       });
-  }, [props.questionId]);
+  }, [setComments, questionId]);
 
   return (
     <div className="Frontpage">
-      <Comments commentsData={comments} />
-      <NewComment
-        userInfo={props.userInfo}
-        questionId={props.questionId}
-        comments={comments}
-        setComments={setComments}
-      />
+      <Comments commentsData={props.comments} />
     </div>
   );
 }

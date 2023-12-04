@@ -31,8 +31,8 @@ jobs:
           app_location: "/packages/react-frontend" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
-          env:
-            REACT_APP_GOOGLE_CLIENT_ID: $(REACT_APP_GOOGLE_CLIENT_ID)
+        env:
+          REACT_APP_GOOGLE_CLIENT_ID: $(REACT_APP_GOOGLE_CLIENT_ID)
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:

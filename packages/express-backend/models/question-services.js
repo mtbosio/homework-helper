@@ -67,8 +67,7 @@ function addQuestion(userQuestion, name) {
     title: sanitizeHtml(userQuestion.title),
     author: sanitizeHtml(name),
     body: sanitizeHtml(userQuestion.body),
-    date: date.toDateString(),
-    time: date.toLocaleTimeString(),
+    date: date.toString(),
     votes: 0,
     comments: 0,
   };

@@ -54,7 +54,7 @@ function addComment(questionID, comment, name) {
     questionID: sanitizeHtml(questionID),
     author: sanitizeHtml(name),
     body: sanitizeHtml(comment.body),
-    date: date.toDateString(),
+    date: date.toString(),
   };
   const commentToAdd = new commentModel(newComment);
   const promise = commentToAdd.save();

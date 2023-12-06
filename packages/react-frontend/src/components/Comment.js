@@ -1,7 +1,8 @@
 import "./Comment.css";
 
 export default function Comment(props) {
-  console.log(props.comment.date);
+  const date = new Date(props.comment.date);
+
   return (
     <div className="commentDiv">
       <div className="commentD1">
@@ -12,7 +13,7 @@ export default function Comment(props) {
       </div>
 
       <div className="commentD3">
-        <p>Date: {props.comment.date}</p>
+        <p>{date.toLocaleString()}</p>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
+import Badge from "./Badge";
 import "./Blog.css";
-import "./Badge.css";
 
 // In the format of [text, background]
 const redColors = ["#a12020", "#ffd4d4"];
@@ -11,21 +11,14 @@ const purpleColors = ["#852eb0", "#eed2fc"];
 const orangeColors = ["#9c6519", "#ffe4c2"];
 
 const subjectToColors = {
-  "MATH": redColors,
-  "ENG": blueColors,
-  "CSC": orangeColors,
-  "PHYS": purpleColors,
-  "ME": greenColors,
-}
-
-function Badge(props) {
-  return (<div className="badge" style={{backgroundColor: props.color}}>
-    <p style={{color: props.textColor}}>{props.text}</p>
-  </div>)
-}
+  MATH: redColors,
+  ENG: blueColors,
+  CSC: orangeColors,
+  PHYS: purpleColors,
+  ME: greenColors,
+};
 
 export default function Blog(props) {
-
   const subject = props.question.subject.toUpperCase();
   let textColor, color;
   if (subjectToColors[subject]) {
@@ -44,24 +37,20 @@ export default function Blog(props) {
   return (
     <div className="blogDiv">
       <div className="blogD1">
-        <Badge text={subject} textColor={textColor} color={color}/>
+        <Badge text={subject} textColor={textColor} color={color} />
         <Link to={`/post/${props.question._id}`}>
-          <h3>
-            {props.question.title}
-          </h3>
+          <h3>{props.question.title}</h3>
         </Link>
       </div>
 
       <div className="blogD2">
-        <p>
-          {props.question.body}
-        </p>
+        <p>{props.question.body}</p>
       </div>
 
       <div className="blogD3">
         <p>
-          {props.question.author} |
-          Votes: {props.question.votes} | Comments: {commentCount}
+          {props.question.author} | Votes: {props.question.votes} | Comments:{" "}
+          {commentCount}
         </p>
       </div>
     </div>

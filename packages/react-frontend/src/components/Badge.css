@@ -1,13 +1,12 @@
-
 .badge {
-    margin: 6px 6px;
-    vertical-align: middle;
-    border-radius: 10px;
+  margin: 6px 6px;
+  vertical-align: middle;
+  border-radius: 10px;
 }
 
 .badge p {
-    margin: 0px 10px;
-    text-align: center;
-    font-weight: 500;
-    font-size: 14px;
+  margin: 0px 10px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
 }

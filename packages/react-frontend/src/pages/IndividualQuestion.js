@@ -30,7 +30,7 @@ export default function IndividualQuestion(props) {
     <>
       <Navbar userInfo={props.userInfo} setUserInfo={props.setUserInfo} />
       <div>
-        <Blog question={question} commentCount={comments.length}/>
+        <Blog question={question} commentCount={comments.length} />
         <CommentCatalog
           userInfo={props.userInfo}
           questionId={params.id}

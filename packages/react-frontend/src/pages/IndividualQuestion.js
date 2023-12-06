@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
-import { getQuestion } from "../apis";
+import { fetchComments, getQuestion } from "../apis";
 import React, { useState, useEffect } from "react";
-import CommentCatalog from "../components/CommentCatalog";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import NewComment from "../NewComment";
 import "./IndividualQuestion.css";
 import Blog from "../components/Blog";
+import Comments from "../components/Comments";
 
 export default function IndividualQuestion(props) {
   const params = useParams();
@@ -24,6 +24,11 @@ export default function IndividualQuestion(props) {
     getQuestion(params.id)
       .then((response) => response.json())
       .then((question) => setQuestion(question));
+
+    fetchComments(params.id)
+      .then((res) => res.json())
+      .then((json) => setComments(json))
+      .catch((error) => console.log(error));
   }, [params.id]);
 
   return (
@@ -31,12 +36,7 @@ export default function IndividualQuestion(props) {
       <Navbar userInfo={props.userInfo} setUserInfo={props.setUserInfo} />
       <div>
         <Blog question={question} commentCount={comments.length} />
-        <CommentCatalog
-          userInfo={props.userInfo}
-          questionId={params.id}
-          comments={comments}
-          setComments={setComments}
-        />
+        <Comments commentsData={comments} />
         <NewComment
           userInfo={props.userInfo}
           questionId={params.id}

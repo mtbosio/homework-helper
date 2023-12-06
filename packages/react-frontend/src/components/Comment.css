@@ -1,0 +1,30 @@
+.commentDiv {
+  margin: 20px auto;
+  width: 640px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 3px 1px -1px #e5e7eb;
+  padding: 0px;
+}
+
+.commentD1 {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.commentD1 h3 {
+  margin: 5px 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.commentD2 {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.commentD2 p {
+  margin: 7px 10px;
+}
+
+.commentD3 p {
+  margin: 3px 10px;
+}

@@ -1,4 +1,4 @@
-import "./navbar.css";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { SearchBar } from "./SearchBar";

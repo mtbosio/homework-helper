@@ -24,7 +24,6 @@ function QuestionCatalog(props) {
       >
         navbar
       </Navbar>
-      <h1>Posts</h1>
       <Blogs questionsData={questions} />
     </div>
   );

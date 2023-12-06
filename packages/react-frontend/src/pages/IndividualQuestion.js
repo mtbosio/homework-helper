@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import CommentCatalog from "./CommentCatalog";
 import Navbar from "../navbar";
 import NewComment from "../NewComment";
+import "./IndividualQuestion.css";
 
 export default function IndividualQuestion(props) {
   const params = useParams();

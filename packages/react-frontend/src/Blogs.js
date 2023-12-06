@@ -1,58 +1,60 @@
 import React from "react";
 import "./Blog.css";
+import "./Badge.css";
 import { Link } from "react-router-dom";
 
-function Blog(props) {
-  return (
-    <div
-      style={{
-        margin: "20px auto",
-        width: "640px",
-        border: "1px solid #E5E7EB",
-        borderRadius: "12px",
-        boxShadow: "0 3px 1px -1px #E5E7EB",
-        padding: "0px",
-      }}
-    >
-      {/* Title */}
-      <Link
-        to={`/post/${props.question._id}`}
-        style={{
-          borderBottom: "1px solid #E5E7EB",
-        }}
-      >
-        <h3
-          style={{
-            margin: "0px 10px",
-          }}
-        >
-          {props.question.title}
-        </h3>
-      </Link>
+// In the format of [text, background]
+const redColors = ["#a12020", "#ffd4d4"];
+const blueColors = ["#127fa3", "#c2f3ff"];
+const greenColors = ["#26911d", "#c2ffbd"];
+const yellowColors = ["#6e690f", "#fffcbd"];
+const purpleColors = ["#852eb0", "#eed2fc"];
+const orangeColors = ["#9c6519", "#ffe4c2"];
 
-      {/* Question Body */}
-      <div
-        style={{
-          borderBottom: "1px solid #E5E7EB",
-        }}
-      >
-        <p
-          style={{
-            margin: "7px 10px",
-          }}
-        >
+const subjectToColors = {
+  "MATH": redColors,
+  "ENG": blueColors,
+  "CSC": orangeColors,
+  "PHYS": purpleColors,
+  "ME": greenColors,
+}
+
+function Badge(props) {
+  return (<div className="badge" style={{backgroundColor: props.color}}>
+    <p style={{color: props.textColor}}>{props.text}</p>
+  </div>)
+}
+
+function Blog(props) {
+
+  const subject = props.question.subject.toUpperCase();
+  let textColor, color;
+  if (subjectToColors[subject]) {
+    [textColor, color] = subjectToColors[subject];
+  } else {
+    [textColor, color] = yellowColors;
+  }
+
+  return (
+    <div className="blogDiv">
+      <div className="blogD1">
+        <Badge text={subject} textColor={textColor} color={color}/>
+        <Link to={`/post/${props.question._id}`}>
+          <h3>
+            {props.question.title}
+          </h3>
+        </Link>
+      </div>
+
+      <div className="blogD2">
+        <p>
           {props.question.body}
         </p>
       </div>
 
-      {/* Footer */}
-      <div>
-        <p
-          style={{
-            margin: "3px 10px",
-          }}
-        >
-          Subject: {props.question.subject} | Author: {props.question.author} |
+      <div className="blogD3">
+        <p>
+          {props.question.author} |
           Votes: {props.question.votes} | Comments: {props.question.comments}
           {props.question.comments.length}
         </p>

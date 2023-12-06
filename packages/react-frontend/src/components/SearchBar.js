@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
-import { fetchQuestionsByTitle } from "./apis";
+import { fetchQuestionsByTitle } from "../apis";
 
 export const SearchBar = ({ setQuestions }) => {
   const [input, setInput] = useState("");

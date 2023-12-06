@@ -2,7 +2,7 @@ import "./navbar.css";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { SearchBar } from "./SearchBar";
-import { verifyCredentials } from "./apis";
+import { verifyCredentials } from "../apis";
 
 const UserInfo = (props) => {
   const onLoginError = (response) => {

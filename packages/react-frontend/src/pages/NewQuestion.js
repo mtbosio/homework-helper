@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { postQuestion } from "../apis";
 import { useNavigate } from "react-router-dom";
 import "./NewQuestion.css";
-import Navbar from "../navbar";
+import Navbar from "../components/navbar";
 
 function NewQuestion(props) {
   const navigate = useNavigate();

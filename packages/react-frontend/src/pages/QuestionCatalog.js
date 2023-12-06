@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
-import Blogs from "../Blogs";
 import { fetchQuestions } from "../apis";
-import Navbar from "../navbar";
+import Navbar from "../components/navbar";
+import Blog from "../components/Blog";
+
+function Blogs(props) {
+  return (
+    <div style={{ display: "block" }}>
+      {props.questionsData.map((question) => (
+        <Blog question={question} key={question._id} />
+      ))}
+    </div>
+  );
+}
 
 function QuestionCatalog(props) {
   const [questions, setQuestions] = useState([]);

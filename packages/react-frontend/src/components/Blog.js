@@ -1,7 +1,6 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import "./Blog.css";
 import "./Badge.css";
-import { Link } from "react-router-dom";
 
 // In the format of [text, background]
 const redColors = ["#a12020", "#ffd4d4"];
@@ -25,7 +24,7 @@ function Badge(props) {
   </div>)
 }
 
-function Blog(props) {
+export default function Blog(props) {
 
   const subject = props.question.subject.toUpperCase();
   let textColor, color;
@@ -33,6 +32,13 @@ function Blog(props) {
     [textColor, color] = subjectToColors[subject];
   } else {
     [textColor, color] = yellowColors;
+  }
+
+  let commentCount;
+  if (props.commentCount === undefined) {
+    commentCount = props.question.comments;
+  } else {
+    commentCount = props.commentCount;
   }
 
   return (
@@ -55,22 +61,9 @@ function Blog(props) {
       <div className="blogD3">
         <p>
           {props.question.author} |
-          Votes: {props.question.votes} | Comments: {props.question.comments}
-          {props.question.comments.length}
+          Votes: {props.question.votes} | Comments: {commentCount}
         </p>
       </div>
     </div>
   );
 }
-
-function Blogs(props) {
-  return (
-    <div style={{ display: "block" }}>
-      {props.questionsData.map((question) => (
-        <Blog question={question} key={question._id} />
-      ))}
-    </div>
-  );
-}
-
-export default Blogs;

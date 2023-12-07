@@ -48,10 +48,12 @@ export default function Blog(props) {
       </div>
 
       <div className="blogD3">
-        <p>
-          {props.question.author} | Votes: {props.question.votes} | Comments:{" "}
-          {commentCount}
-        </p>
+        <Badge
+          text={"Comments: " + commentCount}
+          textColor="#222"
+          color="#F7F7F7"
+        />
+        <Badge text={props.question.author} textColor="#222" color="#F7F7F7" />
       </div>
     </div>
   );

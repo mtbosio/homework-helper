@@ -68,4 +68,22 @@ describe("Question Model", () => {
       expect(error.errors.completed).toBe();
     }
   });
+  it("should fail for question with too short of a title", async () => {
+    let invalidQuestion = {
+      subject: "Math",
+      title: "Calc",
+      date: new Date(),
+      author: "Matt",
+      body: "please help",
+      votes: 10,
+      comments: 10,
+    };
+    try {
+      const newQuestion = new Question(invalidQuestion);
+      await newQuestion.save();
+    } catch (error) {
+      expect(error).toBeInstanceOf(mongoose.Error.ValidationError);
+      expect(error.errors.completed).toBe();
+    }
+  });
 });

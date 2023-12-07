@@ -1,0 +1,25 @@
+{
+  "name": "jest-unit-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "question.test.js",
+  "type": "module",
+  "scripts": {
+    "test": "NODE_OPTIONS='--experimental-vm-modules --experimental-specifier-resolution=node' jest --runInBand --detectOpenHandles ./question"
+},
+"jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.js",
+      "packages/**/question.test.js"
+    ]
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^9.1.1"
+  }
+}

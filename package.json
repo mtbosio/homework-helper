@@ -2,6 +2,7 @@
   "name": "homework-helper",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "dev-frontend": "npm -w react-frontend run start-local",
     "dev-backend": "npm -w express-backend run dev",

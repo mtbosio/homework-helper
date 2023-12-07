@@ -40,40 +40,42 @@ function NewQuestion(props) {
   return (
     <>
       <Navbar userInfo={props.userInfo} setUserInfo={props.setUserInfo} />
-      <div classname="postform">
-        <form onSubmit={handleSubmit}>
-          <label>
-            Title{" "}
-            <input
-              id="title"
-              type="text"
-              value={question.title}
-              onChange={handleChange}
-            />
-          </label>
-          <br></br>
-          <label>
-            Subject{" "}
-            <input
-              id="subject"
-              type="text"
-              value={question.subject}
-              onChange={handleChange}
-            />
-          </label>
-          <br></br>
-          <label>
-            Question{" "}
-            <input
-              id="body"
-              type="text"
-              value={question.body}
-              onChange={handleChange}
-            />
-          </label>
-          <br></br>
-          <button type="submit">Post</button>
-        </form>
+      <div className="postQuestion">
+        <div className="postQuestionHeader">
+          <h1>New Question</h1>
+        </div>
+        <div className="postQuestionContent">
+          <form onSubmit={handleSubmit} autoComplete="off">
+            <label>
+              Title{" "}
+              <input
+                id="title"
+                type="text"
+                value={question.title}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Subject{" "}
+              <input
+                id="subject"
+                type="text"
+                value={question.subject}
+                onChange={handleChange}
+              />
+            </label>
+            <label>
+              Question{" "}
+              <textarea
+                id="body"
+                value={question.body}
+                onChange={handleChange}
+                rows={7}
+              />
+            </label>
+            <button type="submit">Post</button>
+          </form>
+        </div>
       </div>
     </>
   );

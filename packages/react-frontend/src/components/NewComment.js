@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { postComment } from "./apis";
+import { postComment } from "../apis";
 import "./NewComment.css";
 
 function NewComment(props) {
@@ -31,19 +31,15 @@ function NewComment(props) {
 
   return (
     <>
-      <div classname="postform">
-        <form onSubmit={handleSubmit}>
-          <br></br>
-          <label>
-            New Comment{" "}
-            <input
-              id="body"
-              type="text"
-              value={comment.body}
-              onChange={handleChange}
-            />
-          </label>
-          <br></br>
+      <div className="postform">
+        <form onSubmit={handleSubmit} autoComplete="off">
+          <h3>New Comment </h3>
+          <textarea
+            id="body"
+            value={comment.body}
+            onChange={handleChange}
+            rows={5}
+          />
           <button type="submit">Post</button>
         </form>
       </div>

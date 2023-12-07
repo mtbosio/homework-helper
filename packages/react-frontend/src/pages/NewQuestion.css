@@ -1,11 +1,23 @@
-/* Apply to the form elements */
-form {
-  max-width: 600px;
-  margin: 20px auto; /* Center the form with automatic margins on the sides */
+.postQuestion {
+  margin: 20px auto;
+  width: 640px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 3px 1px -1px #e5e7eb;
+  padding: 0px;
+}
+
+.postQuestionHeader {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 5px 10px;
+}
+
+.postQuestionHeader h1 {
+  margin: 0px;
+}
+
+.postQuestionContent {
   padding: 20px;
-  background: white; /* A light grey background */
-  border-radius: 8px; /* Rounded corners for the form */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
 }
 
 label {
@@ -15,9 +27,10 @@ label {
 }
 
 input[type="text"] {
-  width: calc(100% - 20px); /* Full width minus padding */
+  width: 100%;
   padding: 10px; /* Padding inside the inputs for aesthetics */
   margin-top: 5px; /* Space between the label and the input field */
+  margin-left: 0px;
   border: 1px solid #ccc; /* A subtle border around the inputs */
   border-radius: 4px; /* Slightly rounded corners for the inputs */
   box-sizing: border-box; /* Include padding in the width calculation */
@@ -27,6 +40,29 @@ input[type="text"]:focus {
   border-color: #007bff; /* Highlight color when an input is focused */
   outline: none; /* Remove the default focus outline */
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* A blue glow around the focused input */
+}
+
+textarea {
+  width: 100%;
+  padding: 10px; /* Padding inside the inputs for aesthetics */
+  margin-top: 5px; /* Space between the label and the input field */
+  border: 1px solid #ccc; /* A subtle border around the inputs */
+  border-radius: 4px; /* Slightly rounded corners for the inputs */
+  box-sizing: border-box; /* Include padding in the width calculation */
+  resize: none;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+textarea:focus {
+  border-color: #007bff; /* Highlight color when an input is focused */
+  outline: none; /* Remove the default focus outline */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* A blue glow around the focused input */
+  word-wrap: break-word;
+  overflow-y: scroll;
+  resize: none;
 }
 
 button[type="submit"] {

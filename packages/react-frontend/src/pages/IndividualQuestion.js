@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { fetchComments, getQuestion } from "../apis";
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import NewComment from "../NewComment";
+import NewComment from "../components/NewComment";
 import "./IndividualQuestion.css";
 import Blog from "../components/Blog";
 import Comments from "../components/Comments";
@@ -37,12 +37,14 @@ export default function IndividualQuestion(props) {
       <div>
         <Blog question={question} commentCount={comments.length} />
         <Comments commentsData={comments} />
-        <NewComment
-          userInfo={props.userInfo}
-          questionId={params.id}
-          comments={comments}
-          setComments={setComments}
-        />
+        {props.userInfo.name && (
+          <NewComment
+            userInfo={props.userInfo}
+            questionId={params.id}
+            comments={comments}
+            setComments={setComments}
+          />
+        )}
       </div>
     </>
   );

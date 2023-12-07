@@ -5,14 +5,14 @@
   "main": "question.test.js",
   "type": "module",
   "scripts": {
-    "test": "NODE_OPTIONS='--experimental-vm-modules --experimental-specifier-resolution=node' jest --runInBand --detectOpenHandles ./question"
+    "test": "NODE_OPTIONS='--experimental-vm-modules --experimental-specifier-resolution=node' jest --runInBand --detectOpenHandles"
 },
 "jest": {
     "testEnvironment": "node",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.js",
-      "packages/**/question.test.js"
+      "**/**/*.js"
     ]
 },
   "keywords": [],

@@ -1,7 +1,8 @@
 //const { connectDB, dropDB, dropCollections } = require("./setuptestdb");
 //const { Question } = require("../express-backend/models/question.js");
+import Question from "./question";
 import { connectDB, dropDB, dropCollections } from "./setuptestdb";
-import Question from "../question";
+
 import mongoose from "mongoose";
 beforeAll(async () => {
   await connectDB();
@@ -15,7 +16,7 @@ afterEach(async () => {
   await dropCollections();
 });
 describe("Question Model", () => {
-  it("should create a question successfully", async () => {
+  test("should create a question successfully", async () => {
     let validQuestion = {
       subject: "Math",
       title: "Calc Hw",

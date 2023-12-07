@@ -3,14 +3,37 @@ import { Link } from "react-router-dom";
 import { GoogleLogin } from "@react-oauth/google";
 import { SearchBar } from "./SearchBar";
 import { verifyCredentials } from "../apis";
+import { useState } from "react";
 
 const UserInfo = (props) => {
-  const onLoginError = (response) => {
+  function onLoginError(response) {
     console.log(response);
-  };
+  }
+
+  const [isHovering, setIsHovering] = useState(false);
+
+  function onMouseEnter() {
+    setIsHovering(true);
+  }
+
+  function onMouseLeave() {
+    setIsHovering(false);
+  }
 
   if (props.name) {
-    return <button onClick={props.onLogout}>{props.name}: Logout</button>;
+    return (
+      <button
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        className="navbutton"
+        onClick={(val) => {
+          props.onLogout(val);
+          setIsHovering(false);
+        }}
+      >
+        {(isHovering && "Logout") || props.name}
+      </button>
+    );
   } else {
     return (
       <GoogleLogin
@@ -44,11 +67,11 @@ const Navbar = (props) => {
 
   return (
     <nav>
-      <div class="table">
-        <div class="tr">
-          <div class="topnav">
-            <div class="d1">
-              <Link class="active" to="/">
+      <div className="table">
+        <div className="tr">
+          <div className="topnav">
+            <div className="d1">
+              <Link className="active" to="/">
                 Homework Help
               </Link>
             </div>
@@ -60,7 +83,7 @@ const Navbar = (props) => {
             <div className="d3">
               {props.userInfo.name !== undefined && (
                 <Link to="/new">
-                  <button className="newpost">New Question</button>
+                  <button className="navbutton">New Question</button>
                 </Link>
               )}
               <UserInfo

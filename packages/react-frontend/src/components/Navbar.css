@@ -38,9 +38,8 @@ nav {
 }
 
 .d2 {
-  display: flex;
-  flex: 1;
-  width: 200%;
+  flex: 0.8;
+  width: 100%;
   justify-content: center;
 }
 
@@ -68,7 +67,7 @@ nav {
   justify-content: flex-end; /* Aligns the button to the right */
 }
 
-.d3 button.newpost {
+button.navbutton {
   background-color: #303030; /* Button color */
   color: white;
   padding: 8px 15px;
@@ -77,8 +76,11 @@ nav {
   font-size: 12px;
   border-radius: 8px; /* Rounded borders for the button */
   outline: none;
+  margin: 0px 10px;
+  width: 130px;
+  white-space: nowrap;
 }
 
-.d3 button.newpost:hover {
-  background-color: gray; /* Darken the button on hover */
+.d3 button.navbutton:hover {
+  background-color: rgb(73, 73, 73); /* Darken the button on hover */
 }

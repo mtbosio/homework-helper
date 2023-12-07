@@ -11,8 +11,7 @@
     "testEnvironment": "node",
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.js",
-      "**/**/*.js"
+      "**/*.js"
     ]
   },
   "keywords": [],

@@ -9,10 +9,11 @@ module.exports = {
     {
       env: {
         node: true,
+        jest: true,
       },
-      files: [".eslintrc.{js,cjs}"],
+      files: [".eslintrc.{js,cjs}", "**/*.test.js"],
       parserOptions: {
-        sourceType: "script",
+        sourceType: "module",
       },
     },
   ],
@@ -20,6 +21,12 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react"],
-  rules: {},
+  plugins: ["react", "jest"],
+  rules: {
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+  },
 };

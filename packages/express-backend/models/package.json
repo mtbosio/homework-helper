@@ -6,15 +6,15 @@
   "type": "module",
   "scripts": {
     "test": "NODE_OPTIONS='--experimental-vm-modules --experimental-specifier-resolution=node' jest --runInBand --detectOpenHandles"
-},
-"jest": {
+  },
+  "jest": {
     "testEnvironment": "node",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.js",
       "**/**/*.js"
     ]
-},
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

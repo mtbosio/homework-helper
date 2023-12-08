@@ -44,6 +44,4 @@ This project uses ESLint and Prettier to format and check for issues. Use `npm r
 
 Prettier: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
 
-ESLint: https://marketplace.vi![CD](https://github.com/mtbosio/homework-helper/assets/115742527/d9a4e7b6-2180-428c-9a6e-018727ed8ec5)
-![CD](https://github.com/mtbosio/homework-helper/assets/115742527/9a034cfc-6b6a-4fd6-8ece-34027c180bbb)
-sualstudio.com/items?itemName=dbaeumer.vscode-eslint
+ESLint: https://marketplace.vi![CD](https://github.com/mtbosio/homework-helper/assets/115742527/d9a4e7b6-2180-428c-9a6e-018727ed8ec5)sualstudio.com/items?itemName=dbaeumer.vscode-eslint 

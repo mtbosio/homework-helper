@@ -36,7 +36,8 @@ placeholder
 ```
 ## Class (Data Model) Diagram
 
-![CD](https://github.com/mtbosio/homework-helper/assets/115742527/c0a01bbd-48f9-4c46-af12-adb9c550bf43)
+![cdNu](https://github.com/mtbosio/homework-helper/assets/115742527/49e2b63c-6175-4f88-a66c-0ab908198a0a)
+
 
 ## Contributing
 

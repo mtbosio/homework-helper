@@ -1,12 +1,9 @@
 import Comment from "../src/models/comment";
 import { connectDB, dropDB, dropCollections } from "./setuptestdb";
-import mongoose from "mongoose";
 import {
   addComment,
   getComments,
   findCommentById,
-  findCommentByQuestionID,
-  findCommentByAuthor,
 } from "../src/models/comment-services.js";
 
 beforeAll(async () => {

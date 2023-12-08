@@ -1,6 +1,6 @@
 //const { connectDB, dropDB, dropCollections } = require("./setuptestdb");
 //const { Question } = require("../express-backend/models/question.js");
-import Question from "./question";
+import Question from "../src/models/question";
 import { connectDB, dropDB, dropCollections } from "./setuptestdb";
 
 import mongoose from "mongoose";

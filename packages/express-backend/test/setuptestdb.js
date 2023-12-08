@@ -5,6 +5,7 @@ let mongo = null;
 
 const connectDB = async () => {
   mongo = await MongoMemoryServer.create();
+  console.log("connecting");
   const uri = mongo.getUri();
 
   await mongoose.connect(uri, {
@@ -18,6 +19,7 @@ const dropDB = async () => {
     await mongoose.connection.dropDatabase();
     await mongoose.connection.close();
     await mongo.stop();
+    console.log("done.");
   }
 };
 

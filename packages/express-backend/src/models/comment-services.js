@@ -5,24 +5,26 @@ import sanitizeHtml from "sanitize-html";
 dotenv.config();
 mongoose.set("debug", true);
 
-mongoose
-  .connect(
-    "mongodb+srv://" +
-      process.env.MONGO_USER +
-      ":" +
-      process.env.MONGO_PWD +
-      "@" +
-      process.env.MONGO_CLUSTER +
-      "/" +
-      process.env.MONGO_DB +
-      "?retryWrites=true&w=majority",
-    //"mongodb://localhost:27017/questions",
-    {
-      useNewUrlParser: true, //useFindAndModify: false,
-      useUnifiedTopology: true,
-    },
-  )
-  .catch((error) => console.log(error));
+if (process.env.JEST_WORKER_ID === undefined) {
+  mongoose
+    .connect(
+      "mongodb+srva://" +
+        process.env.MONGO_USER +
+        ":" +
+        process.env.MONGO_PWD +
+        "@" +
+        process.env.MONGO_CLUSTER +
+        "/" +
+        process.env.MONGO_DB +
+        "?retryWrites=true&w=majority",
+      //"mongodb://localhost:27017/questions",
+      {
+        useNewUrlParser: true, //useFindAndModify: false,
+        useUnifiedTopology: true,
+      },
+    )
+    .catch((error) => console.log(error));
+}
 
 function getComments(questionID, author) {
   let promise;

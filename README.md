@@ -8,9 +8,6 @@ The Homework Helper program aims to promote peer to peer collaboration in unders
 
 https://www.figma.com/file/UtcYgSzKHoLFOSxKiJmWqG/Homework-Help-Wireframe?type=design&node-id=0%3A1&mode=design&t=0EdMU3zsrRoVIWvT-1 
 
-(Development Enviroment Setup)
-(Class (Data Model Diagrams))
-
 ## Development Enviroment Setup
 
 To run the frontend locally, use:
@@ -37,7 +34,7 @@ Create .env add in express-backend with following text:
 ```
 placeholder
 ```
-## Calss (Data Model) Diagram
+## Class (Data Model) Diagram
 
 ![CD](https://github.com/mtbosio/homework-helper/assets/115742527/c0a01bbd-48f9-4c46-af12-adb9c550bf43)
 

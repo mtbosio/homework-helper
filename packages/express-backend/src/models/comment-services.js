@@ -8,7 +8,7 @@ mongoose.set("debug", true);
 if (process.env.JEST_WORKER_ID === undefined) {
   mongoose
     .connect(
-      "mongodb+srva://" +
+      "mongodb+srv://" +
         process.env.MONGO_USER +
         ":" +
         process.env.MONGO_PWD +

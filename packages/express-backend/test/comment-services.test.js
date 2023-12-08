@@ -1,12 +1,13 @@
-import Comment from "./comment";
+import Comment from "../src/models/comment";
 import { connectDB, dropDB, dropCollections } from "./setuptestdb";
 import mongoose from "mongoose";
-import { 
-    addComment,
-    getComments,
-    findCommentById,
-    findCommentByQuestionID,
-    findCommentByAuthor, } from "./comment-services.js";
+import {
+  addComment,
+  getComments,
+  findCommentById,
+  findCommentByQuestionID,
+  findCommentByAuthor,
+} from "../src/models/comment-services.js";
 
 beforeAll(async () => {
   await connectDB();
@@ -41,21 +42,33 @@ describe("Comment Model", () => {
       date: new Date(),
     };
     let validComment2 = {
-        questionID: "321",
-        author: "lil bro",
-        body: "pls help",
-        date: new Date(),
-      };
+      questionID: "321",
+      author: "lil bro",
+      body: "pls help",
+      date: new Date(),
+    };
     let validComment3 = {
-        questionID: "123",
-        author: "Matt",
-        body: "quiet before i hack u",
-        date: new Date(),
-      };
-    await addComment(validComment1.questionID, validComment1, validComment1.author);
-    await addComment(validComment2.questionID, validComment2, validComment2.author);
-    await addComment(validComment3.questionID, validComment3, validComment3.author);
-    
+      questionID: "123",
+      author: "Matt",
+      body: "quiet before i hack u",
+      date: new Date(),
+    };
+    await addComment(
+      validComment1.questionID,
+      validComment1,
+      validComment1.author,
+    );
+    await addComment(
+      validComment2.questionID,
+      validComment2,
+      validComment2.author,
+    );
+    await addComment(
+      validComment3.questionID,
+      validComment3,
+      validComment3.author,
+    );
+
     //test find()
     let expected = await Comment.find({});
     let comments = await getComments();
@@ -76,6 +89,4 @@ describe("Comment Model", () => {
     let comment = await findCommentById(expected[0]._id);
     expect(expected[0]).toEqual(comment);
   });
-
-  
 });

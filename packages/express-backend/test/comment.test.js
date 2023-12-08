@@ -1,4 +1,4 @@
-import Comment from "./comment";
+import Comment from "../src//models/comment";
 import { connectDB, dropDB, dropCollections } from "./setuptestdb";
 
 beforeAll(async () => {
@@ -29,6 +29,4 @@ describe("Comment Model", () => {
     expect(newComment.author).toBe(validComment.author);
     expect(newComment.date).toBe(validComment.date);
   });
-
-  
 });

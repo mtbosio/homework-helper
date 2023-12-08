@@ -1,11 +1,11 @@
-import Question from "./question";
+import Question from "../src/models/question";
 import { connectDB, dropDB, dropCollections } from "./setuptestdb";
 import {
   addQuestion,
   getQuestions,
   findQuestionById,
   changeCommentAmount,
-} from "./question-services";
+} from "../src/models/question-services";
 import mongoose from "mongoose";
 
 beforeAll(async () => {

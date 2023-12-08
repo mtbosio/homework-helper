@@ -4,7 +4,10 @@
 
 The Homework Helper program aims to promote peer to peer collaboration in understanding and/or further clarifing specific homework related questions outside instruction hours. There are many approaches to assignments and when you become stuck solving a question, an outside perspective can make the difference and Home Helper will be offering just that, outside persepectives.     
 
-(UI Prototype)
+## UI Prototype: Figma Mockup:
+
+https://www.figma.com/file/UtcYgSzKHoLFOSxKiJmWqG/Homework-Help-Wireframe?type=design&node-id=0%3A1&mode=design&t=0EdMU3zsrRoVIWvT-1 
+
 (Development Enviroment Setup)
 (Class (Data Model Diagrams))
 

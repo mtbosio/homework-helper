@@ -11,7 +11,7 @@ https://www.figma.com/file/UtcYgSzKHoLFOSxKiJmWqG/Homework-Help-Wireframe?type=d
 (Development Enviroment Setup)
 (Class (Data Model Diagrams))
 
-## Running locally
+## Development Enviroment Setup
 
 To run the frontend locally, use:
 
@@ -19,11 +19,23 @@ To run the frontend locally, use:
 npm run dev-frontend
 ```
 
+Create .env add in react-frontend with following text:
+
+---
+placeholder
+----
+
 To run the backend locally, use:
 
 ```
 npm run dev-backend
 ```
+
+Create .env add in express-backend with following text:
+
+---
+placeholder
+----
 
 ## Contributing
 

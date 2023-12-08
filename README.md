@@ -21,9 +21,9 @@ npm run dev-frontend
 
 Create .env add in react-frontend with following text:
 
----
+```
 placeholder
-----
+```
 
 To run the backend locally, use:
 
@@ -33,9 +33,10 @@ npm run dev-backend
 
 Create .env add in express-backend with following text:
 
----
+
+```
 placeholder
-----
+```
 
 ## Contributing
 

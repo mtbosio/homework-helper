@@ -3,6 +3,7 @@ import Badge from "./Badge";
 import "./Blog.css";
 
 // In the format of [text, background]
+//const whiteColors = []
 const redColors = ["#a12020", "#ffd4d4"];
 const blueColors = ["#127fa3", "#c2f3ff"];
 const greenColors = ["#26911d", "#c2ffbd"];
@@ -16,13 +17,16 @@ const subjectToColors = {
   CSC: orangeColors,
   PHYS: purpleColors,
   ME: greenColors,
+  PHIL: redColors,
+  //COW: whiteColors,
 };
 
 export default function Blog(props) {
+  const subjectFirstWord = props.question.subject.split(" ")[0].toUpperCase();
   const subject = props.question.subject.toUpperCase();
   let textColor, color;
-  if (subjectToColors[subject]) {
-    [textColor, color] = subjectToColors[subject];
+  if (subjectToColors[subjectFirstWord]) {
+    [textColor, color] = subjectToColors[subjectFirstWord];
   } else {
     [textColor, color] = yellowColors;
   }

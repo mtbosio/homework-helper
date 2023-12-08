@@ -1,6 +1,9 @@
 # homework-helper Product Documentation
 
-(Project Blurb)
+## Project Blurb
+
+The Homework Helper program aims to promote peer to peer collaboration in understanding and/or further clarifing specific homework related questions outside instruction hours. There are many approaches to assignments and when you become stuck solving a question, an outside perspective can make the difference and Home Helper will be offering just that, outside persepectives.     
+
 (UI Prototype)
 (Development Enviroment Setup)
 (Class (Data Model Diagrams))

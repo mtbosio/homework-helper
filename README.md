@@ -16,11 +16,6 @@ To run the frontend locally, use:
 npm run dev-frontend
 ```
 
-Create .env add in react-frontend with following text:
-
-```
-placeholder
-```
 
 To run the backend locally, use:
 
@@ -28,12 +23,6 @@ To run the backend locally, use:
 npm run dev-backend
 ```
 
-Create .env add in express-backend with following text:
-
-
-```
-placeholder
-```
 ## Class (Data Model) Diagram
 
 ![cdNu](https://github.com/mtbosio/homework-helper/assets/115742527/49e2b63c-6175-4f88-a66c-0ab908198a0a)

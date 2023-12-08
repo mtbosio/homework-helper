@@ -1,4 +1,9 @@
-# homework-helper
+# homework-helper Product Documentation
+
+(Project Blurb)
+(UI Prototype)
+(Development Enviroment Setup)
+(Class (Data Model Diagrams))
 
 ## Running locally
 

@@ -4,10 +4,6 @@ import dotenv from "dotenv";
 import sanitizeHtml from "sanitize-html";
 
 dotenv.config();
-console.log("MONGO_USER=", process.env.MONGO_USER);
-console.log("MONGO_PWD=", process.env.MONGO_PWD);
-console.log("MONGO_DB=", process.env.MONGO_DB);
-console.log("MONGO_CLUSTER=", process.env.MONGO_CLUSTER);
 
 mongoose.set("debug", true);
 
